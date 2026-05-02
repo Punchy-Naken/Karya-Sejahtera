@@ -1799,116 +1799,6 @@ Jika <b>sudah memiliki desain</b>, silakan langsung Checkout & lakukan pembayara
           });
       });
 
-      // ================= 1. INISIALISASI SUPABASE =================
-// URL sudah saya rapikan (dihapus bagian /rest/v1/ agar koneksi lancar)
-const SUPABASE_URL = 'https://jdyyunlcqvsceflperdh.supabase.co';
-const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpkeXl1bmxjcXZzY2VmbHBlcmRoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc3MjQ0MzgsImV4cCI6MjA5MzMwMDQzOH0.6j7J77--va_XPziaCCdHV2IvPbiYiWsnh2o41_NHMko';
-
-// Membuat koneksi ke database
-const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-
-
-// ================= 2. AUTHENTICATION LOGIC (Fungsi Kamu) =================
-let isLoginMode = true;
-
-function openAuth() {
-  document.getElementById("authModal").classList.remove("hidden");
-  document.getElementById("authEmail").value = "";
-  document.getElementById("authPassword").value = "";
-  if (!isLoginMode) toggleAuthMode();
-}
-
-function closeAuth() {
-  document.getElementById("authModal").classList.add("hidden");
-}
-
-function toggleAuthMode() {
-  isLoginMode = !isLoginMode;
-  const title = document.getElementById("authTitle");
-  const btn = document.getElementById("authSubmitBtn");
-  const regFields = document.getElementById("registerFields");
-  const toggleText = document.getElementById("authToggleText");
-  const toggleAction = document.getElementById("authToggleAction");
-
-  if (isLoginMode) {
-    title.innerText = "Login";
-    btn.innerText = "Masuk";
-    regFields.classList.add("hidden");
-    toggleText.innerText = "Belum punya akun?";
-    toggleAction.innerText = "Daftar di sini";
-  } else {
-    title.innerText = "Daftar Akun Baru";
-    btn.innerText = "Daftar Sekarang";
-    regFields.classList.remove("hidden");
-    toggleText.innerText = "Sudah punya akun?";
-    toggleAction.innerText = "Masuk";
-  }
-}
-
-// ================= 3. FUNGSI SUBMIT (YANG DIUBAH TOTAL) =================
-async function submitAuth() {
-  const email = document.getElementById("authEmail").value;
-  const pass = document.getElementById("authPassword").value;
-
-  if (!email || !pass) {
-    alert("Harap isi email dan password!");
-    return;
-  }
-
-  // Animasi loading sederhana pada tombol
-  const btn = document.getElementById("authSubmitBtn");
-  const originalText = btn.innerText;
-  btn.innerText = "Tunggu sebentar...";
-  btn.disabled = true;
-
-  if (isLoginMode) {
-    // --- LOGIKA LOGIN ---
-    const { data, error } = await supabaseClient.auth.signInWithPassword({
-      email: email,
-      password: pass,
-    });
-
-    if (error) {
-      alert("Login Gagal: " + error.message);
-    } else {
-      alert("Selamat Datang Kembali!");
-      console.log("User Data:", data);
-      closeAuth();
-      // Opsional: Refresh halaman atau pindah ke Dashboard
-    }
-  } else {
-    // --- LOGIKA DAFTAR (SIGN UP) ---
-    const name = document.getElementById("authName").value;
-    if (!name) {
-      alert("Harap isi nama lengkap!");
-      btn.innerText = originalText;
-      btn.disabled = false;
-      return;
-    }
-
-    const { data, error } = await supabaseClient.auth.signUp({
-      email: email,
-      password: pass,
-      options: {
-        data: {
-          full_name: name,
-        },
-      },
-    });
-
-    if (error) {
-      alert("Daftar Gagal: " + error.message);
-    } else {
-      alert("Pendaftaran Berhasil! Silakan cek email kamu untuk verifikasi akun.");
-      toggleAuthMode();
-    }
-  }
-
-  // Kembalikan tombol ke teks awal
-  btn.innerText = originalText;
-  btn.disabled = false;
-}
-
       // ================= ANIMASI HERO SECTION =================
       gsap.from(".hero-anim", {
         y: 100, // Jarak muncul lebih jauh agar gerakannya lebih kentara
@@ -3546,9 +3436,115 @@ document.addEventListener('DOMContentLoaded', () => {
       document.getElementById('customOptionsList').classList.add('hidden');
     }
   }
-
 </script>
-<!-- Tambahkan ini agar perintah 'supabase' bisa jalan -->
+<!-- 1. PANGGIL LIBRARY SUPABASE DULU DARI CDN -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+
+<!-- 2. BARU BUKA TAG SCRIPT UNTUK KODE JAVASCRIPT KAMU -->
+<script>
+  // ================= 1. INISIALISASI SUPABASE =================
+  const SUPABASE_URL = 'https://jdyyunlcqvsceflperdh.supabase.co';
+  const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpkeXl1bmxjcXZzY2VmbHBlcmRoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc3MjQ0MzgsImV4cCI6MjA5MzMwMDQzOH0.6j7J77--va_XPziaCCdHV2IvPbiYiWsnh2o41_NHMko';
+
+  // Sekarang browser sudah kenal apa itu 'supabase' karena CDN dimuat lebih dulu
+  const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+
+  // ================= 2. AUTHENTICATION LOGIC =================
+  let isLoginMode = true;
+
+  function openAuth() {
+    document.getElementById("authModal").classList.remove("hidden");
+    document.getElementById("authEmail").value = "";
+    document.getElementById("authPassword").value = "";
+    if (!isLoginMode) toggleAuthMode();
+  }
+
+  function closeAuth() {
+    document.getElementById("authModal").classList.add("hidden");
+  }
+
+  function toggleAuthMode() {
+    isLoginMode = !isLoginMode;
+    const title = document.getElementById("authTitle");
+    const btn = document.getElementById("authSubmitBtn");
+    const regFields = document.getElementById("registerFields");
+    const toggleText = document.getElementById("authToggleText");
+    const toggleAction = document.getElementById("authToggleAction");
+
+    if (isLoginMode) {
+      title.innerText = "Login";
+      btn.innerText = "Masuk";
+      regFields.classList.add("hidden");
+      toggleText.innerText = "Belum punya akun?";
+      toggleAction.innerText = "Daftar di sini";
+    } else {
+      title.innerText = "Daftar Akun Baru";
+      btn.innerText = "Daftar Sekarang";
+      regFields.classList.remove("hidden");
+      toggleText.innerText = "Sudah punya akun?";
+      toggleAction.innerText = "Masuk";
+    }
+  }
+
+  // ================= 3. FUNGSI SUBMIT =================
+  async function submitAuth() {
+    const email = document.getElementById("authEmail").value;
+    const pass = document.getElementById("authPassword").value;
+
+    if (!email || !pass) {
+      alert("Harap isi email dan password!");
+      return;
+    }
+
+    const btn = document.getElementById("authSubmitBtn");
+    const originalText = btn.innerText;
+    btn.innerText = "Tunggu sebentar...";
+    btn.disabled = true;
+
+    if (isLoginMode) {
+      const { data, error } = await supabaseClient.auth.signInWithPassword({
+        email: email,
+        password: pass,
+      });
+
+      if (error) {
+        alert("Login Gagal: " + error.message);
+      } else {
+        alert("Selamat Datang Kembali!");
+        console.log("User Data:", data);
+        closeAuth();
+      }
+    } else {
+      const name = document.getElementById("authName").value;
+      if (!name) {
+        alert("Harap isi nama lengkap!");
+        btn.innerText = originalText;
+        btn.disabled = false;
+        return;
+      }
+
+      const { data, error } = await supabaseClient.auth.signUp({
+        email: email,
+        password: pass,
+        options: {
+          data: {
+            full_name: name,
+          },
+        },
+      });
+
+      if (error) {
+        alert("Daftar Gagal: " + error.message);
+      } else {
+        alert("Pendaftaran Berhasil! Silakan cek email kamu untuk verifikasi akun.");
+        toggleAuthMode();
+      }
+    }
+
+    btn.innerText = originalText;
+    btn.disabled = false;
+  }
+</script>
   </body>
 </html>
