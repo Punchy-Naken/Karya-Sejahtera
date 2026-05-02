@@ -1,0 +1,3511 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Karya Sejahtera - Marketplace Percetakan</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      body {
+        font-family: "Plus Jakarta Sans", sans-serif;
+      }
+
+      /* Kode untuk sembunyikan scrollbar */
+      .hide-scroll-bar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+      .hide-scroll-bar::-webkit-scrollbar {
+        display: none;
+      }
+
+      /* NAV */
+      .glass {
+        backdrop-filter: blur(10px);
+        background: rgba(255, 255, 255, 0.9);
+      }
+
+      /* PRODUCT HOVER */
+      .card:hover {
+        transform: translateY(-6px);
+      }
+
+      /* RUNNING TEXT */
+      @keyframes slide {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-50%);
+        }
+      }
+      .running {
+        display: flex;
+        width: max-content; /* Kunci utamanya agar container melebar sesuai isi */
+        animation: slide 15s linear infinite; /* Angka 15s bisa diubah untuk mengatur kecepatan */
+      }
+
+      /* ANIMASI POP-UP ABOUT US */
+      @keyframes popUpBounce {
+        0% {
+          transform: scale(0.7) translateY(30px);
+          opacity: 0;
+        }
+        60% {
+          transform: scale(1.05) translateY(-10px);
+          opacity: 1;
+        }
+        100% {
+          transform: scale(1) translateY(0);
+          opacity: 1;
+        }
+      }
+      .animate-pop {
+        animation: popUpBounce 0.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+      }
+    </style>
+
+    <style>
+    .hide-scroll-bar::-webkit-scrollbar { width: 6px; }
+    .hide-scroll-bar::-webkit-scrollbar-track { background: transparent; }
+    .hide-scroll-bar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+    .hide-scroll-bar::-webkit-scrollbar-thumb:hover { background: #6366f1; }
+</style>
+  </head>
+
+  <body class="bg-slate-50">
+    <!-- OPENING -->
+    <div
+      id="opening"
+      class="fixed inset-0 bg-white z-[9999] flex flex-col items-center justify-center overflow-hidden"
+    >
+      <div
+        class="absolute inset-0 flex items-center justify-center pointer-events-none"
+      >
+        <div
+          id="print-head-cyan"
+          class="h-40 w-full bg-cyan-400 absolute -translate-x-full opacity-60 mix-blend-multiply"
+        ></div>
+        <div
+          id="print-head-magenta"
+          class="h-40 w-full bg-fuchsia-400 absolute -translate-x-full opacity-60 mix-blend-multiply"
+        ></div>
+        <div
+          id="print-head-yellow"
+          class="h-40 w-full bg-yellow-300 absolute -translate-x-full opacity-60 mix-blend-multiply"
+        ></div>
+      </div>
+
+      <div class="relative overflow-hidden z-10">
+        <h1
+          id="logo-text"
+          class="text-5xl md:text-7xl font-extrabold tracking-tight pb-3"
+          style="color: #16a34a; opacity: 0; clip-path: inset(0 100% 0 0)"
+        >
+          Karya Sejahtera
+        </h1>
+      </div>
+
+      <p
+        id="tagline-text"
+        class="mt-8 text-gray-700 tracking-widest text-sm uppercase opacity-0 font-semibold z-10"
+      >
+        Digital Printing & Design
+      </p>
+    </div>
+
+    <!-- RUNNING PROMO -->
+<div class="bg-green-600 text-white text-xs py-2 overflow-hidden flex whitespace-nowrap">
+  <div class="running flex items-center">
+    
+    <!-- SET 1 -->
+    <span class="px-10 inline-flex items-center gap-2">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 text-green-200">
+        <path fill-rule="evenodd" d="M5.25 2.25a3 3 0 00-3 3v4.318a3 3 0 00.879 2.121l9.58 9.581c.92.92 2.39 1.186 3.548.428a18.849 18.849 0 005.441-5.44c.758-1.16.492-2.629-.428-3.548l-9.58-9.581a3 3 0 00-2.122-.879H5.25zM6.375 7.5a1.125 1.125 0 100-2.25 1.125 1.125 0 000 2.25z" clip-rule="evenodd" />
+      </svg>
+      Diskon 10% Member Baru
+    </span>
+    
+    <span class="px-10 inline-flex items-center gap-2">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 text-green-200">
+        <path d="M9.375 3a1.875 1.875 0 0 0 0 3.75h1.875v4.5H3.375A1.875 1.875 0 0 1 1.5 9.375v-.75c0-1.036.84-1.875 1.875-1.875h3.193A3.375 3.375 0 0 1 12 2.753a3.375 3.375 0 0 1 5.432 3.997h3.193c1.035 0 1.875.84 1.875 1.875v.75c0 1.036-.84 1.875-1.875 1.875H12.75v-4.5h1.875a1.875 1.875 0 1 0-1.875-1.875V6.75h-1.5V4.875C11.25 3.839 10.41 3 9.375 3ZM11.25 12.75H3v6.75a2.25 2.25 0 0 0 2.25 2.25h6v-9ZM12.75 12.75v9h6a2.25 2.25 0 0 0 2.25-2.25v-6.75h-8.25Z" />
+      </svg>
+      Gratis Ongkir Min. 100rb
+    </span>
+    
+    <span class="px-10 inline-flex items-center gap-2">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 text-green-200">
+        <path d="M3.478 2.404a.75.75 0 0 0-.926.941l2.432 7.905H13.5a.75.75 0 0 1 0 1.5H4.984l-2.432 7.905a.75.75 0 0 0 .926.94 60.519 60.519 0 0 0 18.445-8.986.75.75 0 0 0 0-1.218A60.517 60.517 0 0 0 3.478 2.404Z" />
+      </svg>
+      Cetak Cepat & Mudah
+    </span>
+    
+    <span class="px-10 inline-flex items-center gap-2">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 text-green-200">
+        <path fill-rule="evenodd" d="M9 4.5a.75.75 0 0 1 .721.544l.813 2.846a3.75 3.75 0 0 0 2.576 2.576l2.846.813a.75.75 0 0 1 0 1.442l-2.846.813a3.75 3.75 0 0 0-2.576 2.576l-.813 2.846a.75.75 0 0 1-1.442 0l-.813-2.846a3.75 3.75 0 0 0-2.576-2.576l-2.846-.813a.75.75 0 0 1 0-1.442l2.846-.813A3.75 3.75 0 0 0 7.466 7.89l.813-2.846A.75.75 0 0 1 9 4.5ZM18 1.5a.75.75 0 0 1 .728.568l.258 1.036c.236.94.97 1.674 1.91 1.91l1.036.258a.75.75 0 0 1 0 1.456l-1.036.258c-.94.236-1.674.97-1.91 1.91l-.258 1.036a.75.75 0 0 1-1.456 0l-.258-1.036a2.625 2.625 0 0 0-1.91-1.91l-1.036-.258a.75.75 0 0 1 0-1.456l1.036-.258a2.625 2.625 0 0 0 1.91-1.91l.258-1.036A.75.75 0 0 1 18 1.5ZM16.5 15a.75.75 0 0 1 .712.513l.394 1.183c.15.447.5.799.948.948l1.183.395a.75.75 0 0 1 0 1.422l-1.183.395c-.447.15-.799.5-.948.948l-.395 1.183a.75.75 0 0 1-1.422 0l-.395-1.183a1.5 1.5 0 0 0-.948-.948l-1.183-.395a.75.75 0 0 1 0-1.422l1.183-.395c.447-.15.799-.5.948-.948l.395-1.183A.75.75 0 0 1 16.5 15Z" clip-rule="evenodd" />
+      </svg>
+      Hasil Tajam & Warna Akurat
+    </span>
+    
+    <span class="px-10 inline-flex items-center gap-2">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 text-green-200">
+        <path fill-rule="evenodd" d="M12.516 2.17a.75.75 0 0 0-1.032 0 11.209 11.209 0 0 1-7.877 3.08.75.75 0 0 0-.722.515A12.74 12.74 0 0 0 2.25 9.75c0 5.942 4.064 10.933 9.568 12.318a.75.75 0 0 0 .364 0c5.504-1.385 9.568-6.376 9.568-12.318a12.74 12.74 0 0 0-.635-3.985.75.75 0 0 0-.722-.515 11.209 11.209 0 0 1-7.877-3.08ZM7.293 9.293a.75.75 0 1 0-1.06 1.06l3.5 3.5a.75.75 0 0 0 1.06 0l6-6a.75.75 0 0 0-1.06-1.06l-5.47 5.47-2.97-2.97Z" clip-rule="evenodd" />
+      </svg>
+      Harga Bersahabat & Transparan
+    </span>
+
+    <span class="px-10 inline-flex items-center gap-2">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 text-green-200">
+        <path fill-rule="evenodd" d="M8.603 3.799A4.49 4.49 0 0 1 12 2.25c1.357 0 2.573.6 3.397 1.549a4.49 4.49 0 0 1 3.498 1.307 4.491 4.491 0 0 1 1.307 3.497A4.49 4.49 0 0 1 21.75 12a4.49 4.49 0 0 1-1.549 3.397 4.491 4.491 0 0 1-1.307 3.497 4.491 4.491 0 0 1-3.497 1.307A4.49 4.49 0 0 1 12 21.75a4.49 4.49 0 0 1-3.397-1.549 4.49 4.49 0 0 1-3.498-1.306 4.491 4.491 0 0 1-1.307-3.498A4.49 4.49 0 0 1 2.25 12c0-1.357.6-2.573 1.549-3.397a4.49 4.49 0 0 1 1.307-3.497 4.49 4.49 0 0 1 3.497-1.307Zm7.007 6.387a.75.75 0 1 0-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.14-.094l3.75-5.25Z" clip-rule="evenodd" />
+      </svg>
+      Garansi Cetak Ulang Jika Cacat Produksi
+    </span>
+
+    <!-- SET 2 (Duplikasi untuk efek running continuous) -->
+    <span class="px-10 inline-flex items-center gap-2">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 text-green-200">
+        <path fill-rule="evenodd" d="M5.25 2.25a3 3 0 00-3 3v4.318a3 3 0 00.879 2.121l9.58 9.581c.92.92 2.39 1.186 3.548.428a18.849 18.849 0 005.441-5.44c.758-1.16.492-2.629-.428-3.548l-9.58-9.581a3 3 0 00-2.122-.879H5.25zM6.375 7.5a1.125 1.125 0 100-2.25 1.125 1.125 0 000 2.25z" clip-rule="evenodd" />
+      </svg>
+      Diskon 10% Member Baru
+    </span>
+    
+    <span class="px-10 inline-flex items-center gap-2">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 text-green-200">
+        <path d="M9.375 3a1.875 1.875 0 0 0 0 3.75h1.875v4.5H3.375A1.875 1.875 0 0 1 1.5 9.375v-.75c0-1.036.84-1.875 1.875-1.875h3.193A3.375 3.375 0 0 1 12 2.753a3.375 3.375 0 0 1 5.432 3.997h3.193c1.035 0 1.875.84 1.875 1.875v.75c0 1.036-.84 1.875-1.875 1.875H12.75v-4.5h1.875a1.875 1.875 0 1 0-1.875-1.875V6.75h-1.5V4.875C11.25 3.839 10.41 3 9.375 3ZM11.25 12.75H3v6.75a2.25 2.25 0 0 0 2.25 2.25h6v-9ZM12.75 12.75v9h6a2.25 2.25 0 0 0 2.25-2.25v-6.75h-8.25Z" />
+      </svg>
+      Gratis Ongkir Min. 100rb
+    </span>
+    
+    <span class="px-10 inline-flex items-center gap-2">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 text-green-200">
+        <path d="M3.478 2.404a.75.75 0 0 0-.926.941l2.432 7.905H13.5a.75.75 0 0 1 0 1.5H4.984l-2.432 7.905a.75.75 0 0 0 .926.94 60.519 60.519 0 0 0 18.445-8.986.75.75 0 0 0 0-1.218A60.517 60.517 0 0 0 3.478 2.404Z" />
+      </svg>
+      Cetak Cepat & Mudah
+    </span>
+    
+    <span class="px-10 inline-flex items-center gap-2">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 text-green-200">
+        <path fill-rule="evenodd" d="M9 4.5a.75.75 0 0 1 .721.544l.813 2.846a3.75 3.75 0 0 0 2.576 2.576l2.846.813a.75.75 0 0 1 0 1.442l-2.846.813a3.75 3.75 0 0 0-2.576 2.576l-.813 2.846a.75.75 0 0 1-1.442 0l-.813-2.846a3.75 3.75 0 0 0-2.576-2.576l-2.846-.813a.75.75 0 0 1 0-1.442l2.846-.813A3.75 3.75 0 0 0 7.466 7.89l.813-2.846A.75.75 0 0 1 9 4.5ZM18 1.5a.75.75 0 0 1 .728.568l.258 1.036c.236.94.97 1.674 1.91 1.91l1.036.258a.75.75 0 0 1 0 1.456l-1.036.258c-.94.236-1.674.97-1.91 1.91l-.258 1.036a.75.75 0 0 1-1.456 0l-.258-1.036a2.625 2.625 0 0 0-1.91-1.91l-1.036-.258a.75.75 0 0 1 0-1.456l1.036-.258a2.625 2.625 0 0 0 1.91-1.91l.258-1.036A.75.75 0 0 1 18 1.5ZM16.5 15a.75.75 0 0 1 .712.513l.394 1.183c.15.447.5.799.948.948l1.183.395a.75.75 0 0 1 0 1.422l-1.183.395c-.447.15-.799.5-.948.948l-.395 1.183a.75.75 0 0 1-1.422 0l-.395-1.183a1.5 1.5 0 0 0-.948-.948l-1.183-.395a.75.75 0 0 1 0-1.422l1.183-.395c.447-.15.799-.5.948-.948l.395-1.183A.75.75 0 0 1 16.5 15Z" clip-rule="evenodd" />
+      </svg>
+      Hasil Tajam & Warna Akurat
+    </span>
+    
+    <span class="px-10 inline-flex items-center gap-2">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 text-green-200">
+        <path fill-rule="evenodd" d="M12.516 2.17a.75.75 0 0 0-1.032 0 11.209 11.209 0 0 1-7.877 3.08.75.75 0 0 0-.722.515A12.74 12.74 0 0 0 2.25 9.75c0 5.942 4.064 10.933 9.568 12.318a.75.75 0 0 0 .364 0c5.504-1.385 9.568-6.376 9.568-12.318a12.74 12.74 0 0 0-.635-3.985.75.75 0 0 0-.722-.515 11.209 11.209 0 0 1-7.877-3.08ZM7.293 9.293a.75.75 0 1 0-1.06 1.06l3.5 3.5a.75.75 0 0 0 1.06 0l6-6a.75.75 0 0 0-1.06-1.06l-5.47 5.47-2.97-2.97Z" clip-rule="evenodd" />
+      </svg>
+      Harga Bersahabat & Transparan
+    </span>
+
+    <span class="px-10 inline-flex items-center gap-2">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 text-green-200">
+        <path fill-rule="evenodd" d="M8.603 3.799A4.49 4.49 0 0 1 12 2.25c1.357 0 2.573.6 3.397 1.549a4.49 4.49 0 0 1 3.498 1.307 4.491 4.491 0 0 1 1.307 3.497A4.49 4.49 0 0 1 21.75 12a4.49 4.49 0 0 1-1.549 3.397 4.491 4.491 0 0 1-1.307 3.497 4.491 4.491 0 0 1-3.497 1.307A4.49 4.49 0 0 1 12 21.75a4.49 4.49 0 0 1-3.397-1.549 4.49 4.49 0 0 1-3.498-1.306 4.491 4.491 0 0 1-1.307-3.498A4.49 4.49 0 0 1 2.25 12c0-1.357.6-2.573 1.549-3.397a4.49 4.49 0 0 1 1.307-3.497 4.49 4.49 0 0 1 3.497-1.307Zm7.007 6.387a.75.75 0 1 0-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.14-.094l3.75-5.25Z" clip-rule="evenodd" />
+      </svg>
+      Garansi Cetak Ulang Jika Cacat Produksi
+    </span>
+    
+  </div>
+</div>
+
+    <!-- NAVBAR -->
+    <nav class="glass sticky top-0 z-50 border-b">
+      <div
+        class="container mx-auto px-6 py-3 flex items-center justify-between flex-nowrap gap-4"
+      >
+        <div class="flex items-center gap-2 flex-shrink-0 whitespace-nowrap">
+          <img
+            src="logo tecno ks.png"
+            alt="logo"
+            class="w-8 h-8 object-contain"
+          />
+          <span class="text-xl font-extrabold text-green-600">
+            Karya Sejahtera
+          </span>
+        </div>
+
+       <div class="hidden md:flex flex-1 max-w-md relative"> <input
+    type="text"
+    id="searchInput"
+    placeholder="Cari produk..."
+    onkeyup="searchProductBaru(this.value)"
+    autocomplete="off"
+    class="w-full p-2 rounded-l-xl border outline-none text-sm focus:border-green-500"
+  />
+  <button
+    class="bg-green-600 hover:bg-green-700 text-white px-4 rounded-r-xl flex items-center justify-center transition-colors duration-200 border border-transparent"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-5 h-5">
+      <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+    </svg>
+  </button>
+
+  <div id="kotakSugesti" class="absolute top-full left-0 w-[calc(100%-3.5rem)] bg-white border border-slate-200 rounded-xl shadow-xl mt-2 hidden max-h-60 overflow-y-auto z-50 hide-scroll-bar">
+    </div>
+</div>
+
+        <div
+          class="flex items-center gap-4 lg:gap-6 whitespace-nowrap flex-shrink-0"
+        >
+          <a href="#" class="text-sm font-medium hover:text-green-600">Home</a>
+
+          <div class="relative group">
+            <button
+              class="text-sm font-medium hover:text-green-600 flex items-center gap-1 cursor-pointer py-2"
+            >
+              Kategori <span class="text-[10px]">▼</span>
+            </button>
+
+            <div
+              class="absolute left-0 mt-1 w-56 bg-white border border-slate-100 rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 flex flex-col overflow-hidden z-50"
+            >
+              <div onclick="pilihKategoriCepat('semua')" class="cursor-pointer flex flex-col items-center justify-center p-3 bg-gray-50 rounded-xl hover:bg-green-100 transition">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-7 h-7 mb-1 text-indigo-600">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6A2.25 2.25 0 0 1 6 3.75h2.25A2.25 2.25 0 0 1 10.5 6v2.25a2.25 2.25 0 0 1-2.25 2.25H6a2.25 2.25 0 0 1-2.25-2.25V6ZM3.75 15.75A2.25 2.25 0 0 1 6 13.5h2.25a2.25 2.25 0 0 1 2.25 2.25V18a2.25 2.25 0 0 1-2.25 2.25H6A2.25 2.25 0 0 1 3.75 18v-2.25ZM13.5 6a2.25 2.25 0 0 1 2.25-2.25H18A2.25 2.25 0 0 1 20.25 6v2.25A2.25 2.25 0 0 1 18 10.5h-2.25a2.25 2.25 0 0 1-2.25-2.25V6ZM13.5 15.75a2.25 2.25 0 0 1 2.25-2.25H18a2.25 2.25 0 0 1 2.25 2.25V18A2.25 2.25 0 0 1 18 20.25h-2.25A2.25 2.25 0 0 1 13.5 18v-2.25Z" />
+    </svg>
+    <span class="text-xs font-semibold text-center text-gray-700">Semua Produk</span>
+  </div>
+              <div onclick="pilihKategoriCepat('Promosi')" class="cursor-pointer flex flex-col items-center justify-center p-3 bg-gray-50 rounded-xl hover:bg-green-100 transition">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.25" stroke="currentColor" class="w-7 h-7 mb-1 text-orange-600">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M19.114 5.636a9 9 0 0 1 0 12.728M16.463 8.288a5.25 5.25 0 0 1 0 7.424M6.75 8.25l4.72-4.72a.75.75 0 0 1 1.28.53v15.88a.75.75 0 0 1-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.009 9.009 0 0 1 2.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75Z" />
+    </svg>
+    <span class="text-xs font-semibold text-center text-gray-700">Promosi</span>
+  </div>
+              <div onclick="pilihKategoriCepat('Packaging & Label')" class="cursor-pointer flex flex-col items-center justify-center p-3 bg-gray-50 rounded-xl hover:bg-green-100 transition">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.25" stroke="currentColor" class="w-7 h-7 mb-1 text-emerald-600">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
+    </svg>
+    <span class="text-xs font-semibold text-center text-gray-700">Packaging & Label</span>
+  </div>
+              <div onclick="pilihKategoriCepat('Business & Administrative')" class="cursor-pointer flex flex-col items-center justify-center p-3 bg-gray-50 rounded-xl hover:bg-green-100 transition">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.25" stroke="currentColor" class="w-7 h-7 mb-1 text-blue-600">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+    </svg>
+    <span class="text-xs font-semibold text-center text-gray-700">Business & Administrative</span>
+  </div>
+              <div onclick="pilihKategoriCepat('Stationery')" class="cursor-pointer flex flex-col items-center justify-center p-3 bg-gray-50 rounded-xl hover:bg-green-100 transition">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.25" stroke="currentColor" class="w-7 h-7 mb-1 text-violet-600">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
+    </svg>
+    <span class="text-xs font-semibold text-center text-gray-700">Stationery</span>
+  </div>
+              <div onclick="pilihKategoriCepat('Greeting & Gift')" class="cursor-pointer flex flex-col items-center justify-center p-3 bg-gray-50 rounded-xl hover:bg-green-100 transition">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.25" stroke="currentColor" class="w-7 h-7 mb-1 text-rose-600">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M21 11.25v8.25a1.5 1.5 0 0 1-1.5 1.5H5.25a1.5 1.5 0 0 1-1.5-1.5v-8.25M12 4.875A2.625 2.625 0 1 0 9.375 7.5H12m0-2.625V7.5m0-2.625A2.625 2.625 0 1 1 14.625 7.5H12m0 0V21m-8.625-9.75h18c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125h-18c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125Z" />
+    </svg>
+    <span class="text-xs font-semibold text-center text-gray-700">Greeting & Gift</span>
+  </div>
+            </div>
+          </div>
+
+          <a
+            href="#jasaDesignSection"
+            onclick="showJasaDesign()"
+            class="text-sm font-medium hover:text-green-600 cursor-pointer"
+            >Jasa Design</a
+          >
+          <button
+            onclick="openAbout()"
+            class="text-sm font-medium hover:text-green-600 transition"
+          >
+            About Us
+          </button>
+
+          <button onclick="toggleCart()" class="relative">
+            🛒
+            <span
+              id="cartCount"
+              class="absolute -top-2 -right-2 bg-red-500 text-white text-[10px] w-5 h-5 flex items-center justify-center rounded-full"
+            >
+              0
+            </span>
+          </button>
+
+          <button
+            onclick="openAuth()"
+            class="bg-green-600 text-white px-4 py-2 rounded-xl text-sm hover:bg-green-700 transition"
+          >
+            Login
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <section
+      class="relative min-h-[500px] flex items-center overflow-hidden bg-slate-900"
+    >
+      <img
+        src="bg ks.jpeg"
+        alt="Background Hero"
+        class="absolute inset-0 w-full h-full object-cover z-0"
+      />
+
+      <div class="absolute inset-0 bg-black/50 z-0"></div>
+
+      <div
+        class="container relative z-10 mx-auto px-6 py-20 flex flex-col md:flex-row items-center justify-between"
+      >
+        <div class="md:w-1/2">
+          <h1
+            class="hero-anim text-4xl md:text-5xl font-extrabold mb-4 text-white leading-tight"
+          >
+            Percetakan Custom <br />
+            <span class="text-green-400">Modern & Fleksibel</span>
+          </h1>
+          <p class="hero-anim text-gray-200 font-medium mb-8 text-lg">
+            Pilih produk, atur desain, dan order langsung via WhatsApp
+          </p>
+
+          <button
+            onclick="
+              document
+                .getElementById('produkSection')
+                .scrollIntoView({ behavior: 'smooth' })
+            "
+            class="bg-green-600 text-white px-8 py-4 rounded-xl font-bold hover:bg-green-700 transition shadow-lg hover:shadow-green-500/40 hover:-translate-y-1 text-lg"
+          >
+            Mulai Order
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- KATEGORI -->
+    <div class="relative bg-gradient-to-br from-emerald-100 via-teal-50 to-green-200 overflow-hidden pb-20">
+  
+  <div class="absolute inset-0 z-0 opacity-20" style="background-image: radial-gradient(#0f766e 2px, transparent 2px); background-size: 32px 32px;"></div>
+  
+  <div class="absolute -top-32 -right-32 w-[35rem] h-[35rem] bg-teal-400 rounded-full mix-blend-multiply filter blur-[90px] opacity-50 z-0"></div>
+  <div class="absolute top-[40%] -left-32 w-[40rem] h-[40rem] bg-green-300 rounded-full mix-blend-multiply filter blur-[90px] opacity-50 z-0"></div>
+  <div class="absolute -bottom-32 right-10 w-[30rem] h-[30rem] bg-emerald-400 rounded-full mix-blend-multiply filter blur-[90px] opacity-40 z-0"></div>
+
+  <section class="relative z-10 pt-16">
+    <div class="container mx-auto px-6">
+      
+      <div class="text-center md:text-left mb-12">
+        <h2 class="text-3xl font-extrabold text-teal-900 tracking-tight pb-1 drop-shadow-sm">
+          Kategori <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-500">Produk</span>
+        </h2>
+        <div class="w-24 h-2 bg-gradient-to-r from-emerald-500 to-teal-400 mt-3 rounded-full md:mx-0 mx-auto shadow-md"></div>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-5 gap-6">
+        
+        <div onclick="filterCategory('Promosi')" class="group bg-white p-6 rounded-3xl shadow-lg shadow-teal-500/10 border border-white flex flex-col items-center justify-center gap-4 cursor-pointer hover:shadow-2xl hover:shadow-teal-500/20 hover:-translate-y-2 hover:border-orange-200 transition-all duration-300 relative overflow-hidden">
+          <div class="absolute inset-0 bg-gradient-to-b from-transparent to-orange-50/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <div class="p-4 bg-orange-50 rounded-2xl group-hover:bg-orange-100 transition-colors duration-300 relative z-10">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.25" stroke="currentColor" class="w-10 h-10 text-orange-500 group-hover:scale-110 group-hover:text-orange-600 transition-all duration-300">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19.114 5.636a9 9 0 0 1 0 12.728M16.463 8.288a5.25 5.25 0 0 1 0 7.424M6.75 8.25l4.72-4.72a.75.75 0 0 1 1.28.53v15.88a.75.75 0 0 1-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.009 9.009 0 0 1 2.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75Z" />
+            </svg>
+          </div>
+          <span class="text-sm font-extrabold text-slate-700 group-hover:text-orange-600 transition-colors text-center relative z-10">Promosi</span>
+        </div>
+
+        <div onclick="filterCategory('Packaging & Label')" class="group bg-white p-6 rounded-3xl shadow-lg shadow-teal-500/10 border border-white flex flex-col items-center justify-center gap-4 cursor-pointer hover:shadow-2xl hover:shadow-teal-500/20 hover:-translate-y-2 hover:border-emerald-200 transition-all duration-300 relative overflow-hidden">
+          <div class="absolute inset-0 bg-gradient-to-b from-transparent to-emerald-50/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <div class="p-4 bg-emerald-50 rounded-2xl group-hover:bg-emerald-100 transition-colors duration-300 relative z-10">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.25" stroke="currentColor" class="w-10 h-10 text-emerald-500 group-hover:scale-110 group-hover:text-emerald-600 transition-all duration-300">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
+            </svg>
+          </div>
+          <span class="text-sm font-extrabold text-slate-700 group-hover:text-emerald-600 transition-colors text-center relative z-10">Packaging & Label</span>
+        </div>
+
+        <div onclick="filterCategory('Business & Administrative')" class="group bg-white p-6 rounded-3xl shadow-lg shadow-teal-500/10 border border-white flex flex-col items-center justify-center gap-4 cursor-pointer hover:shadow-2xl hover:shadow-teal-500/20 hover:-translate-y-2 hover:border-blue-200 transition-all duration-300 relative overflow-hidden">
+          <div class="absolute inset-0 bg-gradient-to-b from-transparent to-blue-50/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <div class="p-4 bg-blue-50 rounded-2xl group-hover:bg-blue-100 transition-colors duration-300 relative z-10">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.25" stroke="currentColor" class="w-10 h-10 text-blue-500 group-hover:scale-110 group-hover:text-blue-600 transition-all duration-300">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+            </svg>
+          </div>
+          <span class="text-sm font-extrabold text-slate-700 group-hover:text-blue-600 transition-colors text-center relative z-10">Business & Admin</span>
+        </div>
+
+        <div onclick="filterCategory('Stationery')" class="group bg-white p-6 rounded-3xl shadow-lg shadow-teal-500/10 border border-white flex flex-col items-center justify-center gap-4 cursor-pointer hover:shadow-2xl hover:shadow-teal-500/20 hover:-translate-y-2 hover:border-violet-200 transition-all duration-300 relative overflow-hidden">
+          <div class="absolute inset-0 bg-gradient-to-b from-transparent to-violet-50/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <div class="p-4 bg-violet-50 rounded-2xl group-hover:bg-violet-100 transition-colors duration-300 relative z-10">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.25" stroke="currentColor" class="w-10 h-10 text-violet-500 group-hover:scale-110 group-hover:text-violet-600 transition-all duration-300">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
+            </svg>
+          </div>
+          <span class="text-sm font-extrabold text-slate-700 group-hover:text-violet-600 transition-colors text-center relative z-10">Stationery</span>
+        </div>
+
+        <div onclick="filterCategory('Greeting & Gift')" class="group bg-white p-6 rounded-3xl shadow-lg shadow-teal-500/10 border border-white flex flex-col items-center justify-center gap-4 cursor-pointer hover:shadow-2xl hover:shadow-teal-500/20 hover:-translate-y-2 hover:border-rose-200 transition-all duration-300 relative overflow-hidden">
+          <div class="absolute inset-0 bg-gradient-to-b from-transparent to-rose-50/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <div class="p-4 bg-rose-50 rounded-2xl group-hover:bg-rose-100 transition-colors duration-300 relative z-10">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.25" stroke="currentColor" class="w-10 h-10 text-rose-500 group-hover:scale-110 group-hover:text-rose-600 transition-all duration-300">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21 11.25v8.25a1.5 1.5 0 0 1-1.5 1.5H5.25a1.5 1.5 0 0 1-1.5-1.5v-8.25M12 4.875A2.625 2.625 0 1 0 9.375 7.5H12m0-2.625V7.5m0-2.625A2.625 2.625 0 1 1 14.625 7.5H12m0 0V21m-8.625-9.75h18c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125h-18c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125Z" />
+            </svg>
+          </div>
+          <span class="text-sm font-extrabold text-slate-700 group-hover:text-rose-600 transition-colors text-center relative z-10">Greeting & Gift</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+    <!-- PRODUK -->
+      <section id="produkSection" class="relative z-10 pt-20">
+    <div class="container mx-auto px-6">
+      
+      <div class="text-center md:text-left mb-12">
+        <h2 class="text-3xl font-extrabold text-teal-900 tracking-tight pb-1 drop-shadow-sm">
+          Produk <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-500">Kami</span>
+        </h2>
+        <div class="w-24 h-2 bg-gradient-to-r from-emerald-500 to-teal-400 mt-3 rounded-full md:mx-0 mx-auto shadow-md"></div>
+      </div>
+
+      <div id="productGrid" class="grid grid-cols-2 md:grid-cols-4 gap-6">
+        </div>
+    </div>
+  </section>
+
+</div>
+
+    <section
+      id="jasaDesignSection"
+      class="py-16 bg-slate-50 hidden scroll-mt-20 relative overflow-hidden"
+    >
+      <div class="absolute top-0 left-0 w-full h-full overflow-hidden z-0 pointer-events-none">
+        <div class="absolute -top-24 -left-24 w-96 h-96 bg-green-400 rounded-full mix-blend-multiply filter blur-3x1 opacity-30"></div>
+        <div class="absolute bottom-0 right-0 w-96 h-96 bg-blue-400 rounded-full mix-blend-multiply filter blur-3x1 opacity-30"></div>
+      </div>
+
+      <div class="container mx-auto px-6 relative z-10">
+        <div class="text-center mb-12">
+          <h2 id="animasi-jasa" class="text-4xl font-extrabold text-slate-800 tracking-tight">
+            <span class="inline-block">Layanan</span> 
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-blue-600 inline-block ml-1">Jasa Desain</span>
+          </h2>
+          <p class="text-slate-500 mt-3 max-w-2xl mx-auto text-lg">
+             Mau desain yang standout dan nggak asal jadi? Tenang, di sini kamu bisa pilih yang praktis atau bikin yang bener-bener sesuai gaya kamu!
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8 lg:gap-12">
+          
+          <div class="group bg-white p-8 rounded-3xl shadow-xl shadow-slate-200/50 border border-slate-100 hover:-translate-y-2 transition-all duration-300 relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-emerald-400 to-green-500"></div>
+            
+            <div class="flex items-start gap-4 mb-4">
+              <div class="p-3 bg-green-50 rounded-2xl text-green-500 group-hover:scale-110 group-hover:bg-green-100 transition duration-300">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 22h14a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v4"></path>
+                  <path d="M14 2v6h6"></path>
+                  <path d="m3 12.5 3 3 7-7"></path>
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-2xl font-bold text-slate-800">Pilih Template</h3>
+                <p class="text-sm text-slate-500 mt-1">Pilih desain yang kamu suka, sesuaikan seperlunya, dan langsung siap digunakan. Praktis tanpa ribet, hasil tetap maksimal.</p>
+              </div>
+            </div>
+
+           <div class="flex flex-wrap gap-2 mb-6 mt-6">
+    <button type="button" onclick="pilihKategoriTemplate('Minimalis Modern')" class="tab-kategori text-slate-600 bg-slate-50 border border-slate-200 hover:border-green-400 hover:text-green-600 hover:shadow-sm focus:outline-none focus:border-green-400 focus:text-green-600 focus:bg-green-50 px-4 py-1.5 text-xs font-bold rounded-full transition-all">Minimalis Modern</button>
+    <button type="button" onclick="pilihKategoriTemplate('Elegan & Premium')" class="tab-kategori text-slate-600 bg-slate-50 border border-slate-200 hover:border-green-400 hover:text-green-600 hover:shadow-sm focus:outline-none focus:border-green-400 focus:text-green-600 focus:bg-green-50 px-4 py-1.5 text-xs font-bold rounded-full transition-all">Elegan & Premium</button>
+    <button type="button" onclick="pilihKategoriTemplate('Creative & Colorful')" class="tab-kategori text-slate-600 bg-slate-50 border border-slate-200 hover:border-green-400 hover:text-green-600 hover:shadow-sm focus:outline-none focus:border-green-400 focus:text-green-600 focus:bg-green-50 px-4 py-1.5 text-xs font-bold rounded-full transition-all">Creative & Colorful</button>
+    <button type="button" onclick="pilihKategoriTemplate('Professional Corporate')" class="tab-kategori text-slate-600 bg-slate-50 border border-slate-200 hover:border-green-400 hover:text-green-600 hover:shadow-sm focus:outline-none focus:border-green-400 focus:text-green-600 focus:bg-green-50 px-4 py-1.5 text-xs font-bold rounded-full transition-all">Professional Corporate</button>
+    <button type="button" onclick="pilihKategoriTemplate('Fun & Playful')" class="tab-kategori text-slate-600 bg-slate-50 border border-slate-200 hover:border-green-400 hover:text-green-600 hover:shadow-sm focus:outline-none focus:border-green-400 focus:text-green-600 focus:bg-green-50 px-4 py-1.5 text-xs font-bold rounded-full transition-all">Fun & Playful</button>
+    <button type="button" onclick="pilihKategoriTemplate('Feminine & Soft')" class="tab-kategori text-slate-600 bg-slate-50 border border-slate-200 hover:border-green-400 hover:text-green-600 hover:shadow-sm focus:outline-none focus:border-green-400 focus:text-green-600 focus:bg-green-50 px-4 py-1.5 text-xs font-bold rounded-full transition-all">Feminine & Soft</button>
+    <button type="button" onclick="pilihKategoriTemplate('Bold & Eye-Catching')" class="tab-kategori text-slate-600 bg-slate-50 border border-slate-200 hover:border-green-400 hover:text-green-600 hover:shadow-sm focus:outline-none focus:border-green-400 focus:text-green-600 focus:bg-green-50 px-4 py-1.5 text-xs font-bold rounded-full transition-all">Bold & Eye-Catching</button>
+</div>
+
+            <div id="wadah-template" class="grid grid-cols-3 gap-3 mb-4">
+              </div>
+
+            <input type="hidden" id="inputTemplateTerpilih" value="">
+            
+            <div id="notifTemplate" class="hidden mb-6 overflow-hidden rounded-xl bg-gradient-to-r from-green-50 to-emerald-50 border border-green-200 p-3 flex items-center gap-3">
+              <div class="bg-green-500 text-white rounded-full p-1">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>
+              </div>
+              <p class="text-sm font-bold text-green-700">
+                Terpilih: <span id="namaTemplateTampil" class="text-green-900"></span>
+              </p>
+            </div>
+
+            <button
+  onclick="cekDanBukaModal('template')"
+  class="w-full bg-green-600 text-white py-4 rounded-xl font-bold text-lg hover:bg-green-600 hover:shadow-lg hover:shadow-green-500/30 transition-all duration-300"
+>
+  Gunakan Template Ini
+</button>
+          </div>
+
+          <div class="group bg-white p-8 rounded-3xl shadow-xl shadow-slate-200/50 border border-slate-100 hover:-translate-y-2 transition-all duration-300 relative overflow-hidden flex flex-col">
+            <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-blue-500 to-indigo-600"></div>
+
+            <div class="flex items-start gap-4 mb-6">
+              <div class="p-3 bg-blue-50 rounded-2xl text-blue-500 group-hover:scale-110 group-hover:bg-blue-100 transition duration-300">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"></path>
+                  <path d="M5 3v4"></path>
+                  <path d="M19 17v4"></path>
+                  <path d="M3 5h4"></path>
+                  <path d="M17 19h4"></path>
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-2xl font-bold text-slate-800">Desain Custom</h3>
+                <p class="text-sm text-slate-500 mt-1">Punya ide sendiri? Kita bantu wujudin dari nol sampai jadi desain yang sesuai banget sama yang kamu bayangin.</p>
+              </div>
+            </div>
+
+            <div class="flex-grow flex flex-col justify-center mb-8">
+              <div class="relative w-full rounded-2xl bg-slate-900 p-6 overflow-hidden shadow-2xl group-hover:shadow-blue-500/20 transition-all duration-500">
+                <div class="absolute -top-10 -right-10 w-32 h-32 bg-blue-500 rounded-full mix-blend-screen filter blur-[40px] opacity-40"></div>
+                <div class="absolute -bottom-10 -left-10 w-32 h-32 bg-indigo-500 rounded-full mix-blend-screen filter blur-[40px] opacity-40"></div>
+                
+                <div class="relative z-10 flex items-center justify-between">
+                  <div>
+                    <div class="flex items-center gap-2 mb-1">
+                      <span class="flex h-2 w-2 relative">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
+                      </span>
+                      <p class="text-blue-300 text-xs font-bold tracking-widest uppercase">Premium Service</p>
+                    </div>
+                    <h4 class="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white to-blue-200">100% Original</h4>
+                    <p class="text-slate-400 text-sm mt-1">Dibuat khusus untuk kamu, bukan template ulang, jadi lebih unik dan berkarakter.</p>
+                  </div>
+                  
+                  <div class="p-3 bg-white/10 rounded-xl backdrop-blur-md border border-white/20">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-blue-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"></path>
+                      <path d="m9 12 2 2 4-4"></path>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+<button
+  onclick="cekDanBukaModal('custom')"
+  class="w-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-4 rounded-xl font-bold text-lg hover:from-blue-700 hover:to-indigo-700 transition-all shadow-lg hover:shadow-blue-500/40 transform hover:-translate-y-0.5"
+>
+  Request Desain Custom
+</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SELLER PICKUP PREVIEW -->
+<section class="py-16 bg-white relative">
+  <div class="container mx-auto px-6 relative z-10">
+    
+    <div class="text-center md:text-left mb-12">
+      <h2 class="text-3xl font-extrabold text-teal-900 tracking-tight pb-1 drop-shadow-sm">
+        Lokasi <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-500">Kami</span>
+      </h2>
+      <div class="w-24 h-2 bg-gradient-to-r from-emerald-500 to-teal-400 mt-3 rounded-full md:mx-0 mx-auto shadow-md"></div>
+    </div>
+
+    <div class="max-w-3xl mx-auto md:mx-0">
+      <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition">
+        <h3 class="font-bold text-lg text-green-600">
+          Karya Sejahtera Printing
+        </h3>
+        <p class="text-sm text-slate-500 mt-2 leading-relaxed">
+          Jl. Daksinapati Tenggara No.1 14, RT.6/RW.14, Rawamangun, Kec. Pulo Gadung,
+          <br class="hidden md:block" />
+          Kota Jakarta Timur, Daerah Khusus Ibukota Jakarta 13220
+        </p>
+
+        <iframe
+          class="w-full h-64 md:h-80 mt-4 rounded-xl shadow-inner border border-slate-200"
+          src="https://maps.google.com/maps?q=Jl.+Daksinapati+Tenggara+No.1+14,+RT.6%2FRW.14,+Rawamangun,+Kec.+Pulo+Gadung,+Kota+Jakarta+Timur&t=&z=17&ie=UTF8&iwloc=&output=embed"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        >
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+    <!-- AUTH MODAL -->
+    <div
+      id="authModal"
+      class="fixed inset-0 bg-black/50 hidden flex items-center justify-center z-[100]"
+    >
+      <div class="bg-white p-6 rounded-2xl w-80 relative">
+        <button
+          onclick="closeAuth()"
+          class="absolute top-4 right-4 text-slate-400 hover:text-red-500 font-bold text-lg transition"
+        >
+          ✖
+        </button>
+
+        <h2 id="authTitle" class="text-xl font-bold mb-4 text-slate-800">
+          Login
+        </h2>
+
+        <div id="registerFields" class="hidden">
+          <input
+            type="text"
+            id="authName"
+            placeholder="Nama Lengkap"
+            class="w-full mb-3 p-2 border rounded-xl outline-none focus:border-green-500 text-sm"
+          />
+        </div>
+
+        <input
+          type="email"
+          id="authEmail"
+          placeholder="Email"
+          class="w-full mb-3 p-2 border rounded-xl outline-none focus:border-green-500 text-sm"
+        />
+        <input
+          type="password"
+          id="authPassword"
+          placeholder="Password"
+          class="w-full mb-3 p-2 border rounded-xl outline-none focus:border-green-500 text-sm"
+        />
+
+        <button
+          onclick="submitAuth()"
+          id="authSubmitBtn"
+          class="w-full bg-green-600 text-white py-2 rounded-xl font-bold hover:bg-green-700 transition text-sm"
+        >
+          Masuk
+        </button>
+
+        <p class="text-center text-xs mt-4 text-slate-500">
+          <span id="authToggleText">Belum punya akun?</span>
+          <button
+            onclick="toggleAuthMode()"
+            class="text-green-600 font-bold hover:underline transition"
+          >
+            <span id="authToggleAction">Daftar di sini</span>
+          </button>
+        </p>
+      </div>
+    </div>
+
+    <!-- MODAL PRODUK -->
+    <div
+      id="productModal"
+      class="fixed inset-0 bg-black/50 hidden flex items-center justify-center z-50"
+    >
+      <div
+        class="bg-white w-[90%] md:w-[800px] rounded-2xl p-6 max-h-[90vh] overflow-y-auto"
+      >
+        <div class="flex justify-between items-center mb-4">
+          <h2 id="modalTitle" class="text-xl font-bold"></h2>
+          <button onclick="closeModal()">✖</button>
+        </div>
+
+        <img id="modalImage" class="w-full h-60 object-cover rounded-xl mb-4" />
+
+        <p class="text-green-600 font-bold mb-4" id="modalPrice"></p>
+
+        <p
+          id="modalCustomNote"
+          class="text-red-500 text-xs font-bold mb-4 bg-red-50 p-2 rounded hidden"
+        ></p>
+
+        <div id="productOptions" class="space-y-4"></div>
+
+        <!-- OPSI -->
+        <div id="productOptions" class="space-y-4"></div>
+
+        <!-- QUANTITY -->
+        <div class="flex items-center gap-3 mt-4">
+  <button onclick="changeQty(-1)" class="px-4 py-2 bg-slate-100 rounded-xl font-bold hover:bg-slate-200 transition-colors">-</button>
+  <span id="qty" class="text-lg font-bold w-10 text-center">1</span>
+  <button onclick="changeQty(1)" class="px-4 py-2 bg-slate-100 rounded-xl font-bold hover:bg-slate-200 transition-colors">+</button>
+</div>
+
+<p id="modalMinQtyText" class="text-orange-600 text-[11px] font-black mt-2 hidden italic"></p>
+
+        <!-- UPLOAD -->
+        <div class="mt-4">
+          <input type="file" id="fileUpload" accept=".jpg,.png,.pdf" />
+          <p class="text-xs text-gray-400">Max 10MB (jpg/png/pdf)</p>
+        </div>
+
+        <!-- TOTAL HARGA -->
+        <div class="mt-6 border-t pt-4">
+          <div class="flex justify-between items-center mb-4">
+            <span id="modalTotal" class="text-xl font-bold text-green-600"
+              >Rp 0</span
+            >
+          </div>
+
+          <div class="flex gap-3">
+            <button
+              onclick="addToCart()"
+              class="w-full bg-white text-green-600 border-2 border-green-600 py-2 rounded-xl font-bold hover:bg-green-50 transition"
+            >
+              + Tambah ke Keranjang
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      id="aboutModal"
+      class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm hidden flex items-center justify-center z-[100] p-4"
+    >
+      <div
+        class="bg-white p-8 rounded-[2rem] w-full max-w-[800px] max-h-[90vh] overflow-y-auto shadow-2xl relative animate-pop"
+      >
+        <button
+          onclick="closeAbout()"
+          class="absolute top-5 right-5 bg-slate-100 hover:bg-red-500 hover:text-white text-slate-500 w-8 h-8 rounded-full flex items-center justify-center transition duration-300 z-10"
+        >
+          ✖
+        </button>
+
+        <div class="text-center">
+          <div
+            class="inline-flex items-center justify-center bg-green-100 p-2 rounded-full mb-4 shadow-inner w-20 h-20 overflow-hidden"
+          >
+            <img src="logo tecno ks.png" alt="Logo Karya Sejahtera" class="w-full h-full object-contain" />
+          </div>
+
+          <h2 class="text-3xl font-extrabold text-slate-800 mb-2">
+            Kenalan Sama <span class="text-green-600">Karya Sejahtera!</span>
+          </h2>
+
+          <p class="text-slate-500 mb-6 text-sm leading-relaxed">
+  Karya Sejahtera menghadirkan solusi produksi cetak yang praktis dan terarah dengan <b>kualitas terjaga dan pelayanan responsif</b>, dirancang untuk memenuhi kebutuhan beragam mulai dari pelajar, mahasiswa, panitia kegiatan, komunitas, hingga UMKM, perusahaan, dan pelaku usaha yang membutuhkan proses pemesanan yang jelas, fleksibel, serta hasil akhir yang konsisten sesuai kebutuhan. Didukung oleh tim yang kompeten, peralatan produksi yang memadai, serta sistem pemesanan berbasis web, setiap pesanan diproduksi dan dikelola secara langsung melalui alur terintegrasi mulai dari penerimaan order, pengolahan desain, proses cetak, finishing, hingga pengemasan dan pengiriman. <b>Dengan komunikasi yang mudah, layanan yang adaptif, serta dukungan penyedia bahan, mitra logistik, dan sistem pembayaran digital, setiap proses dirancang agar lebih efisien, cepat, dan nyaman bagi pelanggan.</b>
+</p>
+
+         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+
+  <div class="bg-emerald-50 p-4 rounded-2xl border border-slate-100 hover:border-green-400 hover:shadow-lg hover:shadow-green-100/50 transition-all duration-300 group cursor-pointer relative overflow-hidden">
+    
+    <div class="mb-3 inline-flex items-center justify-center w-12 h-12 rounded-xl bg-green-50 text-green-600 group-hover:bg-green-400 group-hover:text-white group-hover:-translate-y-1 transition-all duration-300">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09l2.846.813-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.428-1.428L13.5 18.75l1.178-.394a2.25 2.25 0 001.428-1.428l.394-1.183.394 1.183a2.25 2.25 0 001.428 1.428l1.178.394-1.178.394a2.25 2.25 0 00-1.428 1.428z" />
+      </svg>
+    </div>
+    <h3 class="font-bold text-base text-slate-800 group-hover:text-green-600 transition-colors">Custom Sesukamu</h3>
+    <p class="text-sm text-slate-500 mt-1 leading-relaxed">
+      Bebas cetak desain sendiri atau minta tim kami bantu wujudkan idemu.
+    </p>
+  </div>
+
+  <div class="bg-emerald-50 p-4 rounded-2xl border border-slate-100 hover:border-green-400 hover:shadow-lg hover:shadow-green-100/50 transition-all duration-300 group cursor-pointer relative overflow-hidden">
+    <div class="mb-3 inline-flex items-center justify-center w-12 h-12 rounded-xl bg-green-50 text-green-600 group-hover:bg-green-400 group-hover:text-white group-hover:-translate-y-1 transition-all duration-300">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 01-.825-.242m9.345-8.334a2.126 2.126 0 00-.476-.095 48.64 48.64 0 00-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0011.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155" />
+      </svg>
+    </div>
+    <h3 class="font-bold text-base text-slate-800 group-hover:text-green-600 transition-colors">Respon Cepat & Ramah</h3>
+    <p class="text-sm text-slate-500 mt-1 leading-relaxed">
+      Konsultasi langsung dengan tim kami, fast respon dan siap bantu kebutuhanmu.
+    </p>
+  </div>
+          </div>
+
+          <div
+            class="bg-green-600 text-white py-3 rounded-xl font-medium text-sm shadow-md shadow-green-600/30 mb-8"
+          >
+            "Mencetak karya, dari ide menuju sejahtera."
+          </div>
+
+          <div class="border-t border-slate-100 pt-8 mt-4">
+            <h3 class="text-2xl font-extrabold text-slate-800 mb-6">
+              Our Team
+            </h3>
+
+            <div
+              class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
+            >
+              <div
+                class="bg-slate-50 p-4 rounded-2xl border border-slate-100 hover:border-green-300 transition-all duration-300 hover:scale-105 active:scale-95 hover:shadow-md cursor-pointer text-center"
+              >
+                <img
+                  src="Naila.png"
+                  alt="Nama Tim"
+                  class="w-20 h-20 rounded-full mx-auto mb-3 object-cover border-4 border-white shadow-sm"
+                />
+                <h4 class="font-bold text-sm text-slate-800">
+                  Purwandini Naila Cahya
+                </h4>
+                <p class="text-green-600 text-[11px] font-bold mb-2 uppercase">
+                  Web Developer & Product Lead
+                </p>
+                <p class="text-xs text-slate-500 leading-tight">
+                  Mengembangkan, mengelola, dan memastikan website berjalan
+                  optimal.
+                </p>
+              </div>
+
+              <div
+                class="bg-slate-50 p-4 rounded-2xl border border-slate-100 hover:border-green-300 transition-all duration-300 hover:scale-105 active:scale-95 hover:shadow-md cursor-pointer text-center"
+              >
+                <img
+                  src="Jopis.png"
+                  alt="Nama Tim"
+                  class="w-20 h-20 rounded-full mx-auto mb-3 object-cover border-4 border-white shadow-sm"
+                />
+                <h4 class="font-bold text-sm text-slate-800">
+                  Jovisca Nadya Kuzaeni
+                </h4>
+                <p class="text-green-600 text-[11px] font-bold mb-2 uppercase">
+                  Customer Service
+                </p>
+                <p class="text-xs text-slate-500 leading-tight">
+                  Membalas pesan, follow-up order, dan menjaga kepuasan
+                  pelanggan.
+                </p>
+              </div>
+
+              <div
+                class="bg-slate-50 p-4 rounded-2xl border border-slate-100 hover:border-green-300 transition-all duration-300 hover:scale-105 active:scale-95 hover:shadow-md cursor-pointer text-center"
+              >
+                <img
+                  src="Japit.png"
+                  alt="Nama Tim"
+                  class="w-20 h-20 rounded-full mx-auto mb-3 object-cover border-4 border-white shadow-sm"
+                />
+                <h4 class="font-bold text-sm text-slate-800">Zahra Fitri</h4>
+                <p class="text-green-600 text-[11px] font-bold mb-2 uppercase">
+                  Customer Service
+                </p>
+                <p class="text-xs text-slate-500 leading-tight">
+                  Menangani chat, menjawab pertanyaan, dan melayani pelanggan.
+                </p>
+              </div>
+
+              <div
+                class="bg-slate-50 p-4 rounded-2xl border border-slate-100 hover:border-green-300 transition-all duration-300 hover:scale-105 active:scale-95 hover:shadow-md cursor-pointer text-center"
+              >
+                <img
+                  src="Chris.png"
+                  alt="Nama Tim"
+                  class="w-20 h-20 rounded-full mx-auto mb-3 object-cover border-4 border-white shadow-sm"
+                />
+                <h4 class="font-bold text-sm text-slate-800">
+                  Christina Maharani
+                </h4>
+                <p class="text-green-600 text-[11px] font-bold mb-2 uppercase">
+                  Graphic Designer
+                </p>
+                <p class="text-xs text-slate-500 leading-tight">
+                  Mendesain konten kreatif dan membantu revisi desain.
+                </p>
+              </div>
+
+              <div
+                class="bg-slate-50 p-4 rounded-2xl border border-slate-100 hover:border-green-300 transition-all duration-300 hover:scale-105 active:scale-95 hover:shadow-md cursor-pointer text-center"
+              >
+                <img
+                  src="Fitri.png"
+                  alt="Nama Tim"
+                  class="w-20 h-20 rounded-full mx-auto mb-3 object-cover border-4 border-white shadow-sm"
+                />
+                <h4 class="font-bold text-sm text-slate-800">Fitria Alfiani</h4>
+                <p class="text-green-600 text-[11px] font-bold mb-2 uppercase">
+                  Social Media Specialist
+                </p>
+                <p class="text-xs text-slate-500 leading-tight">
+                  Membuat postingan, caption, dan menjaga konsistensi konten.
+                </p>
+              </div>
+
+              <div
+                class="bg-slate-50 p-4 rounded-2xl border border-slate-100 hover:border-green-300 transition-all duration-300 hover:scale-105 active:scale-95 hover:shadow-md cursor-pointer text-center"
+              >
+                <img
+                  src="Raya.png"
+                  alt="Nama Tim"
+                  class="w-20 h-20 rounded-full mx-auto mb-3 object-cover border-4 border-white shadow-sm"
+                />
+                <h4 class="font-bold text-sm text-slate-800">Naraya Syafira</h4>
+                <p class="text-green-600 text-[11px] font-bold mb-2 uppercase">
+                  Social Media Specialist
+                </p>
+                <p class="text-xs text-slate-500 leading-tight">
+                  Mengelola konten, strategi, dan insight media sosial.
+                </p>
+              </div>
+
+              <div
+                class="bg-slate-50 p-4 rounded-2xl border border-slate-100 hover:border-green-300 transition-all duration-300 hover:scale-105 active:scale-95 hover:shadow-md cursor-pointer text-center"
+              >
+                <img
+                  src="Bila.png"
+                  alt="Nama Tim"
+                  class="w-20 h-20 rounded-full mx-auto mb-3 object-cover border-4 border-white shadow-sm"
+                />
+                <h4 class="font-bold text-sm text-slate-800">
+                  Nabila Shafa Adlina
+                </h4>
+                <p class="text-green-600 text-[11px] font-bold mb-2 uppercase">
+                  Graphic Designer
+                </p>
+                <p class="text-xs text-slate-500 leading-tight">
+                  Membuat desain visual sesuai kebutuhan pelanggan.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      id="designModal"
+      class="fixed inset-0 bg-slate-900/50 hidden flex items-center justify-center z-[110] backdrop-blur-sm"
+    >
+      <div
+        class="bg-white w-[90%] md:w-[600px] rounded-2xl p-6 max-h-[90vh] overflow-y-auto relative shadow-2xl"
+      >
+        <button
+          onclick="closeDesignModal()"
+          class="absolute top-4 right-4 bg-slate-100 text-slate-500 hover:text-white hover:bg-red-500 w-8 h-8 rounded-full font-bold text-lg transition flex items-center justify-center"
+        >
+          ✖
+        </button>
+
+        <h2
+          id="designModalTitle"
+          class="text-2xl font-bold text-slate-800 mb-2"
+        >
+          Order Desain
+        </h2>
+        <p id="designModalDesc" class="text-sm text-slate-500 mb-6"></p>
+
+        <div class="space-y-4">
+          <div>
+            <label
+              class="block text-[10px] font-bold text-gray-500 uppercase mb-1"
+              >Pilih Produk yang Ingin Didesain</label
+            >
+            <!-- Wrapper untuk Custom Dropdown agar bisa di-scroll -->
+<div class="relative" id="dropdownWrapper">
+  <button
+    type="button"
+    onclick="toggleDropdown()"
+    class="w-full border p-3 rounded-xl text-sm bg-slate-50 outline-none focus:border-green-500 focus:bg-white transition flex justify-between items-center"
+  >
+    <span id="selectedProductText">Flyer / Brosur</span>
+    <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+  </button>
+
+  <!-- Input tersembunyi agar fungsi kirimWA() tetap bisa mengambil data id="designCategory" -->
+  <input type="hidden" id="designCategory" value="Flyer / Brosur" />
+
+  <!-- Menu Pilihan (Dibatasi tingginya dengan max-h-48 dan ada scroll-nya) -->
+  <ul
+    id="customOptionsList"
+    class="hidden absolute z-50 left-0 w-full mt-2 bg-white border border-gray-200 rounded-xl shadow-xl max-h-48 overflow-y-auto hide-scroll-bar"
+  >
+    <li onclick="pilihOpsi('Flyer / Brosur')" class="px-4 py-3 text-sm cursor-pointer hover:bg-green-50 transition border-b border-gray-50">Flyer / Brosur</li>
+    <li onclick="pilihOpsi('Poster')" class="px-4 py-3 text-sm cursor-pointer hover:bg-green-50 transition border-b border-gray-50">Poster</li>
+    <li onclick="pilihOpsi('Booklet')" class="px-4 py-3 text-sm cursor-pointer hover:bg-green-50 transition border-b border-gray-50">Booklet</li>
+    <li onclick="pilihOpsi('Stiker / Label')" class="px-4 py-3 text-sm cursor-pointer hover:bg-green-50 transition border-b border-gray-50">Stiker / Label</li>
+    <li onclick="pilihOpsi('Hang Tag')" class="px-4 py-3 text-sm cursor-pointer hover:bg-green-50 transition border-b border-gray-50">Hang Tag</li>
+    <li onclick="pilihOpsi('Paper Sleeve')" class="px-4 py-3 text-sm cursor-pointer hover:bg-green-50 transition border-b border-gray-50">Paper Sleeve</li>
+    <li onclick="pilihOpsi('Kertas Kado')" class="px-4 py-3 text-sm cursor-pointer hover:bg-green-50 transition border-b border-gray-50">Kertas Kado</li>
+    <li onclick="pilihOpsi('Kartu Nama')" class="px-4 py-3 text-sm cursor-pointer hover:bg-green-50 transition border-b border-gray-50">Kartu Nama</li>
+    <li onclick="pilihOpsi('Amplop')" class="px-4 py-3 text-sm cursor-pointer hover:bg-green-50 transition border-b border-gray-50">Amplop</li>
+    <li onclick="pilihOpsi('Sertifikat')" class="px-4 py-3 text-sm cursor-pointer hover:bg-green-50 transition border-b border-gray-50">Sertifikat</li>
+    <li onclick="pilihOpsi('Notebook')" class="px-4 py-3 text-sm cursor-pointer hover:bg-green-50 transition border-b border-gray-50">Notebook</li>
+    <li onclick="pilihOpsi('Bookmark')" class="px-4 py-3 text-sm cursor-pointer hover:bg-green-50 transition border-b border-gray-50">Bookmark</li>
+    <li onclick="pilihOpsi('Greeting Card')" class="px-4 py-3 text-sm cursor-pointer hover:bg-green-50 transition border-b border-gray-50">Greeting Card</li>
+    <li onclick="pilihOpsi('Gift Box')" class="px-4 py-3 text-sm cursor-pointer hover:bg-green-50 transition border-b border-gray-50">Gift Box</li>
+    <li onclick="pilihOpsi('Kebutuhan Lainnya')" class="px-4 py-3 text-sm cursor-pointer hover:bg-green-50 transition">Kebutuhan Lainnya</li>
+  </ul>
+</div>
+          </div>
+
+          <div>
+  <label class="block text-[10px] font-bold text-gray-500 uppercase mb-1">
+    Catatan Kebutuhan Desain (Isi Format di Bawah)
+  </label>
+  
+  <div id="dynamicFormContainer" class="w-full border p-3 rounded-xl text-sm bg-green-50/30 max-h-80 overflow-y-auto">
+      </div>
+
+  <p class="text-[10px] text-orange-500 font-medium mt-2">
+    💡 *Tips: Isi poin-poin di atas agar desain yang dibuat lebih sesuai dengan keinginanmu.
+  </p>
+</div>
+
+          <button
+            onclick="submitDesignOrder()"
+            class="w-full mt-4 bg-green-600 text-white py-3 rounded-xl font-bold hover:bg-green-700 transition shadow-lg hover:shadow-green-500/40 text-lg flex justify-center items-center gap-2"
+          >
+            <span>Kirim Request via WhatsApp</span>
+            <span class="text-xl">💬</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- CART -->
+    <div
+      id="cartBox"
+      class="hidden fixed bottom-4 right-4 bg-white rounded-2xl shadow-2xl w-80 z-50 flex flex-col max-h-[85vh]"
+    >
+      <div class="flex justify-between items-center p-4 border-b">
+        <h3 class="font-bold">Keranjang 🛒</h3>
+        <button
+          onclick="toggleCart()"
+          class="text-gray-400 hover:text-red-500 font-bold text-lg transition"
+        >
+          ✖
+        </button>
+      </div>
+
+      <div class="p-4 overflow-y-auto flex-1">
+        <div id="cartItems" class="text-sm space-y-2"></div>
+
+        <p class="font-bold mt-2" id="cartTotal">Total: Rp 0</p>
+
+        <div class="mt-3 border-t pt-3 text-xs space-y-2">
+          <input
+            id="custName"
+            class="w-full border p-2 rounded"
+            placeholder="Nama Lengkap"
+          />
+          <input
+            id="custPhone"
+            class="w-full border p-2 rounded"
+            placeholder="No WhatsApp"
+          />
+          <input
+            id="custEmail"
+            class="w-full border p-2 rounded"
+            placeholder="Email"
+          />
+          <input
+            id="custAddress"
+            class="w-full border p-2 rounded"
+            placeholder="Alamat Lengkap"
+          />
+
+          <textarea
+            id="orderNote"
+            class="w-full border p-2 rounded mt-2 text-sm"
+            placeholder="Pesan / Catatan:"
+            rows="2"
+          ></textarea>
+
+          <div class="space-y-1 mt-2">
+  <label class="text-[10px] font-bold text-gray-500 uppercase">
+    Metode Pengiriman & Pick up
+  </label>
+  
+  <div class="grid grid-cols-2 gap-2" id="shippingOptions">
+    <button
+      type="button"
+      onclick="pilihPengiriman('kurir', this)"
+      class="ship-btn flex items-center justify-center gap-2 border border-gray-200 rounded-lg p-2.5 hover:border-blue-500 hover:bg-blue-50 hover:text-blue-700 transition-all duration-300 text-xs font-bold text-gray-600 shadow-sm"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-blue-500">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 0 1-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 0 0-3.213-9.193 2.056 2.056 0 0 0-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 0 0-10.026 0 1.106 1.106 0 0 0-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12" />
+      </svg>
+      Kirim via Kurir
+    </button>
+
+    <button
+      type="button"
+      onclick="pilihPengiriman('toko', this)"
+      class="ship-btn flex items-center justify-center gap-2 border border-gray-200 rounded-lg p-2.5 hover:border-emerald-500 hover:bg-emerald-50 hover:text-emerald-700 transition-all duration-300 text-xs font-bold text-gray-600 shadow-sm"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-emerald-500">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 21v-7.5a.75.75 0 0 1 .75-.75h3a.75.75 0 0 1 .75.75V21m-4.5 0H2.36m11.14 0H18m0 0h3.64m-1.39 0V9.349m-16.5 11.65V9.35m0 0a3.001 3.001 0 0 0 3.75-.615A2.993 2.993 0 0 0 9.75 9.75c.896 0 1.7-.393 2.25-1.016a2.993 2.993 0 0 0 2.25 1.016c.896 0 1.7-.393 2.25-1.016a3.001 3.001 0 0 0 3.75.614m-16.5 0a3.004 3.004 0 0 1-.621-4.72L4.318 3.44A1.5 1.5 0 0 1 5.378 3h13.243a1.5 1.5 0 0 1 1.06.44l1.19 1.189a3 3 0 0 1-.621 4.72m-13.5 8.65h3.75a.75.75 0 0 0 .75-.75V13.5a.75.75 0 0 0-.75-.75H6.75a.75.75 0 0 0-.75.75v3.75c0 .415.336.75.75.75Z" />
+      </svg>
+      Ambil di Lokasi
+    </button>
+  </div>
+
+  <select
+    id="shippingType"
+    class="hidden"
+    onchange="handleShippingTypeChange(this.value)"
+  >
+    <option value="">-- Pilih Metode --</option>
+    <option value="kurir">Kirim via Kurir</option>
+    <option value="toko">Ambil di Lokasi</option>
+  </select>
+</div>
+
+            <select
+              id="shippingType"
+              class="hidden"
+              onchange="handleShippingTypeChange(this.value)"
+            >
+              <option value="">-- Pilih Metode --</option>
+              <option value="kurir">Kirim via Kurir</option>
+              <option value="toko">Ambil di Lokasi</option>
+            </select>
+          </div>
+
+          <div id="specificShippingContainer" class="hidden mt-1 space-y-1">
+            <select
+              id="specificShippingSelect"
+              class="w-full border p-2 rounded text-sm border-green-500"
+              onchange="calculateFinalShipping(this.value)"
+            ></select>
+          </div>
+
+          <div class="space-y-1 mt-3">
+            <label class="text-[10px] font-bold text-gray-500 uppercase"
+              >Metode Pembayaran</label
+            >
+
+            <input type="hidden" id="selectedPayment" value="" />
+
+            <div class="grid grid-cols-2 gap-2" id="paymentOptions">
+              
+              <button
+                type="button"
+                onclick="pilihPembayaran('Transfer', this)"
+                class="pay-btn flex items-center justify-center gap-1 border border-gray-200 rounded p-2 hover:border-green-600 transition text-xs font-bold text-gray-600"
+              >
+                Transfer
+              </button>
+              <button
+                type="button"
+                onclick="pilihPembayaran('QRIS', this)"
+                class="pay-btn flex items-center justify-center gap-1 border border-gray-200 rounded p-2 hover:border-red-500 transition text-xs font-bold text-gray-600"
+              >
+                QRIS
+              </button>
+            </div>
+
+            <div id="paymentInfo" class="mt-1"></div>
+
+            <div
+              id="qrisArea"
+              class="hidden mt-4 text-center bg-gray-50 border border-gray-200 p-4 rounded-lg shadow-sm"
+            >
+              <p class="text-sm md:text-base font-bold text-gray-800 mb-2">
+                Scan QRIS Karya Sejahtera
+              </p>
+
+              <img
+                src="qris ks.png"
+                alt="QRIS"
+                class="w-48 h-48 md:w-56 md:h-56 mx-auto my-3 border border-gray-300 rounded-lg shadow-md object-contain"
+              />
+
+              <div
+                class="mt-3 p-3 bg-yellow-100 border-l-4 border-yellow-500 rounded text-left"
+              >
+                <p class="text-xs md:text-sm text-yellow-800 leading-relaxed">
+                  <b>❗PENTING❗:</b>  
+Jika <b>sudah memiliki desain</b>, silakan langsung Checkout & lakukan pembayaran. Jangan lupa <b>Screenshot (SS) bukti pembayaran</b> dan kirim ke WhatsApp. Jika <b>memerlukan jasa desain</b>, mohon konfirmasi terlebih dahulu melalui WhatsApp sebelum Checkout, karena <b>harga dapat berbeda</b>.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <p
+            id="shippingInfo"
+            class="text-green-600 font-bold mt-1 text-xs"
+          ></p>
+
+          <div class="p-4 border-t bg-gray-50 rounded-b-2xl">
+        <button
+          onclick="checkoutWA()"
+          class="w-full bg-green-600 text-white py-2 rounded-xl font-bold hover:bg-green-700 transition"
+        >
+          Checkout via WhatsApp
+        </button>
+      </div>
+    </div>
+        </div>
+      </div>
+
+    <footer class="relative bg-[#0a0f16] text-slate-300 pt-12 pb-8 overflow-hidden font-sans border-t border-slate-800/50">
+  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full md:w-3/4 h-1/2 bg-green-500/10 blur-[120px] rounded-full pointer-events-none"></div>
+  <div class="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-green-500/50 to-transparent"></div>
+
+  <div class="container mx-auto px-6 relative z-10">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-10 mb-10">
+      
+      <div class="md:col-span-4">
+        <h2 class="text-3xl font-black mb-4 bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-emerald-600 inline-block tracking-tight">
+          Karya Sejahtera
+        </h2>
+        <p class="text-slate-400 leading-relaxed max-w-sm text-sm">
+          Percetakan custom modern dan fleksibel. Solusi cetak cepat, mudah, dan terjangkau untuk berbagai kebutuhan Anda.
+        </p>
+      </div>
+
+      <div class="md:col-span-3">
+        <h3 class="font-semibold mb-4 text-lg tracking-wide flex items-center gap-2">
+          <span class="w-1.5 h-1.5 rounded-full bg-green-500 md:hidden"></span>
+          <span class="bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-emerald-600">Perusahaan</span>
+        </h3>
+        <ul class="space-y-3 text-sm">
+          <li>
+            <a href="javascript:void(0)" onclick="openAbout()" class="group flex items-center text-slate-400 hover:text-green-400 transition-colors duration-300 whitespace-nowrap cursor-pointer">
+              <span class="w-2 h-2 rounded-full bg-green-500 opacity-0 group-hover:opacity-100 group-hover:mr-3 transition-all duration-300"></span>
+              Tentang Kami
+            </a>
+          </li>
+          <li>
+            <a href="javascript:void(0)" onclick="openTerms()" class="group flex items-center text-slate-400 hover:text-green-400 transition-colors duration-300 whitespace-nowrap cursor-pointer">
+              <span class="w-2 h-2 rounded-full bg-green-500 opacity-0 group-hover:opacity-100 group-hover:mr-3 transition-all duration-300"></span>
+              Syarat & Ketentuan
+            </a>
+          </li>
+          <li>
+            <a href="javascript:void(0)" onclick="openPrivacy()" class="group flex items-center text-slate-400 hover:text-blue-400 transition-colors duration-300 whitespace-nowrap cursor-pointer">
+              <span class="w-2 h-2 rounded-full bg-blue-500 opacity-0 group-hover:opacity-100 group-hover:mr-3 transition-all duration-300"></span>
+              Kebijakan Privasi
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="md:col-span-3">
+        <h3 class="font-semibold mb-4 text-lg tracking-wide flex items-center gap-2">
+          <span class="w-1.5 h-1.5 rounded-full bg-green-500 md:hidden"></span>
+          <span class="bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-emerald-600">Hubungi Kami</span>
+        </h3>
+        <ul class="space-y-3">
+          <li>
+            <a href="https://wa.me/6285691023162" target="_blank" class="flex items-center gap-4 text-slate-400 hover:text-white transition-all group">
+              <div class="min-w-[40px] w-10 h-10 rounded-xl bg-slate-800/50 flex items-center justify-center group-hover:bg-green-500 group-hover:shadow-lg group-hover:shadow-green-500/25 transition-all duration-300 border border-slate-700/50 group-hover:border-green-500">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-slate-300 group-hover:text-white">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-2.896-1.596-5.436-4.136-7.032-7.032l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+                </svg>
+              </div>
+              <span class="text-sm font-medium group-hover:text-green-400 transition-colors whitespace-nowrap">WhatsApp</span>
+            </a>
+          </li>
+          <li>
+            <a href="mailto:printingkaryasejahtera@gmail.com" class="flex items-center gap-4 text-slate-400 hover:text-white transition-all group">
+              <div class="min-w-[40px] w-10 h-10 rounded-xl bg-slate-800/50 flex items-center justify-center group-hover:bg-green-500 group-hover:shadow-lg group-hover:shadow-green-500/25 transition-all duration-300 border border-slate-700/50 group-hover:border-green-500">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-slate-300 group-hover:text-white">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+                </svg>
+              </div>
+              <span class="text-sm font-medium group-hover:text-green-400 transition-colors whitespace-nowrap">E-mail</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="md:col-span-2 flex flex-col md:items-end">
+        <h3 class="font-semibold mb-4 text-lg tracking-wide flex items-center md:justify-end gap-2 w-full text-left md:text-right whitespace-nowrap">
+          <span class="w-1.5 h-1.5 rounded-full bg-green-500 md:hidden"></span>
+          <span class="bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-emerald-600">Ikuti Kami</span>
+        </h3>
+        <div class="flex gap-3 md:justify-end">
+          <a href="https://www.instagram.com/ksprintingid" target="_blank" class="w-10 h-10 rounded-full bg-slate-800/80 flex items-center justify-center text-slate-400 hover:bg-gradient-to-tr hover:from-green-500 hover:to-emerald-400 hover:text-white hover:-translate-y-1 transition-all duration-300 shadow-sm hover:shadow-green-500/40">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z"/>
+            </svg>
+          </a>
+          <a href="https://x.com/ksprintingID" target="_blank" class="w-10 h-10 rounded-full bg-slate-800/80 flex items-center justify-center text-slate-400 hover:bg-gradient-to-tr hover:from-green-500 hover:to-emerald-400 hover:text-white hover:-translate-y-1 transition-all duration-300 shadow-sm hover:shadow-green-500/40">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.008 3.824H5.059z"/>
+            </svg>
+          </a>
+          <a href="https://www.facebook.com/share/1BaCQta2oM/" target="_blank" class="w-10 h-10 rounded-full bg-slate-800/80 flex items-center justify-center text-slate-400 hover:bg-gradient-to-tr hover:from-green-500 hover:to-emerald-400 hover:text-white hover:-translate-y-1 transition-all duration-300 shadow-sm hover:shadow-green-500/40">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="border-t border-slate-800/60 pt-6 flex flex-col md:flex-row items-center justify-between text-xs text-slate-500">
+      <p>© 2026 Karya Sejahtera. All rights reserved.</p>
+      <p class="mt-4 md:mt-0 bg-slate-800/50 px-4 py-2 rounded-full border border-slate-700/50">
+        Desain oleh <span class="text-green-400 font-semibold tracking-wide">Karya Sejahtera</span>
+      </p>
+    </div>
+  </div>
+
+  <!-- MODAL 1: SYARAT & KETENTUAN (T&C) -->
+<div id="termsModal" class="fixed inset-0 bg-slate-950/60 backdrop-blur-xl hidden flex items-center justify-center z-[120] p-4 font-sans">
+    <div class="relative bg-[#f8fafc] w-full max-w-[1100px] max-h-[95vh] rounded-[2rem] shadow-[0_0_100px_rgba(5,150,105,0.15)] overflow-hidden flex flex-col animate-in fade-in zoom-in duration-500 border border-white">
+        
+        <!-- Header T&C -->
+        <div class="relative z-20 px-6 py-4 md:px-10 md:py-5 bg-white/90 backdrop-blur-2xl border-b border-slate-200/60 flex justify-between items-center gap-6">
+            <div>
+                <div class="flex items-center gap-2 mb-1">
+                    <div class="p-1.5 bg-emerald-600 rounded-lg text-white shadow-md">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                    </div>
+                    <span class="px-2 py-0.5 bg-slate-900 text-white text-[9px] font-black uppercase tracking-widest rounded-full">Legal Policy</span>
+                    <span class="px-2 py-0.5 bg-emerald-100 text-emerald-700 text-[9px] font-bold uppercase tracking-widest rounded-full flex items-center gap-1">
+                        <span class="w-1 h-1 rounded-full bg-emerald-500 animate-pulse"></span> v.2024.1
+                    </span>
+                </div>
+                <h2 class="text-2xl md:text-3xl font-black text-slate-900 tracking-tighter leading-none">
+                    Syarat & <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-500">Ketentuan</span>
+                </h2>
+            </div>
+            <button onclick="closeTerms()" class="p-2 bg-white hover:bg-slate-100 border border-slate-200 rounded-xl transition-all duration-300 group shadow-sm">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-slate-600 group-hover:rotate-90 transition-transform duration-300"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+            </button>
+        </div>
+
+        <!-- Content T&C -->
+        <div class="relative z-10 flex-1 overflow-y-auto p-5 md:p-8 space-y-6 hide-scroll-bar">
+            <div class="bg-emerald-50 border border-emerald-100 text-emerald-800 p-4 rounded-xl text-[12px] md:text-[13px] font-medium text-center md:text-left">
+                Dengan mengakses dan menggunakan website <strong>Karya Sejahtera</strong>, Anda dianggap telah membaca, memahami, dan menyetujui seluruh syarat dan ketentuan berikut:
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-4">
+                <!-- Section 1 -->
+                <div class="col-span-1 md:col-span-8 bg-slate-900 text-white p-6 rounded-[2rem] relative overflow-hidden group shadow-lg">
+                    <div class="relative z-10">
+                        <h3 class="text-xl font-black mb-3 tracking-tight flex items-center gap-2">
+                            <span class="text-emerald-400">1.</span> Ketentuan Umum
+                        </h3>
+                        <p class="text-[12px] text-slate-300 mb-3">Karya Sejahtera adalah platform marketplace percetakan yang menyediakan layanan:</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <div class="flex items-center px-3 py-1.5 bg-white/10 rounded-lg border border-white/10 text-[12px] font-medium backdrop-blur-sm">Cetak (Custom & Ready)</div>
+                            <div class="flex items-center px-3 py-1.5 bg-white/10 rounded-lg border border-white/10 text-[12px] font-medium backdrop-blur-sm">Jasa Desain (Template/Custom)</div>
+                            <div class="flex items-center px-3 py-1.5 bg-white/10 rounded-lg border border-white/10 text-[12px] font-medium backdrop-blur-sm">Order via WhatsApp</div>
+                        </div>
+                        <p class="text-[11px] text-emerald-400/80 font-medium italic">* Kami berhak mengubah, menambah, atau menghapus layanan sewaktu-waktu.</p>
+                    </div>
+                </div>
+                <!-- Section 2 -->
+                <div class="col-span-1 md:col-span-4 bg-white border border-slate-200 p-6 rounded-[2rem] relative overflow-hidden shadow-sm">
+                    <h3 class="text-lg font-black text-slate-800 mb-3 tracking-tight"><span class="text-emerald-500">2.</span> Akun Pengguna</h3>
+                    <ul class="space-y-2 text-[12px] text-slate-600 font-medium leading-snug">
+                        <li class="flex gap-2 items-start"><div class="w-1.5 h-1.5 rounded-full bg-slate-400 mt-1.5 flex-shrink-0"></div> Data wajib akurat, lengkap & terbaru.</li>
+                        <li class="flex gap-2 items-start"><div class="w-1.5 h-1.5 rounded-full bg-slate-400 mt-1.5 flex-shrink-0"></div> Keamanan akun tanggung jawab Anda.</li>
+                        <li class="flex gap-2 items-start text-red-500 font-bold"><div class="w-1.5 h-1.5 rounded-full bg-red-500 mt-1.5 flex-shrink-0"></div> Dilarang menyalahgunakan akun; pelanggaran berakibat hapus akun.</li>
+                    </ul>
+                </div>
+                <!-- Section 3 -->
+                <div class="col-span-1 md:col-span-5 bg-white border border-slate-200 p-6 rounded-[2rem] shadow-sm">
+                    <h3 class="text-lg font-black text-slate-800 mb-3 tracking-tight"><span class="text-emerald-500">3.</span> Pemesanan</h3>
+                    <div class="flex gap-2 mb-3">
+                        <div class="flex-1 bg-slate-50 p-2 md:p-3 rounded-xl border border-slate-100 text-center flex flex-col justify-center">
+                            <span class="block text-[10px] font-bold text-slate-700 uppercase">1. Sudah Bayar</span>
+                        </div>
+                        <div class="flex-1 bg-emerald-50 p-2 md:p-3 rounded-xl border border-emerald-100 text-center flex flex-col justify-center">
+                            <span class="block text-[10px] font-bold text-emerald-800 uppercase">2. Konfirmasi WA</span>
+                        </div>
+                    </div>
+                    <ul class="space-y-1 text-[11px] text-slate-500 leading-tight">
+                        <li>• Pemesanan via website dan/atau WhatsApp resmi.</li>
+                        <li>• Detail pesanan (ukuran, jumlah, desain) adalah tanggung jawab pengguna.</li>
+                    </ul>
+                </div>
+                <!-- Section 4 -->
+                <div class="col-span-1 md:col-span-7 bg-gradient-to-br from-emerald-600 to-teal-700 text-white p-6 rounded-[2rem] shadow-lg relative overflow-hidden">
+                    <div class="relative z-10">
+                        <h3 class="text-lg font-black mb-3 tracking-tight flex items-center gap-2"><span class="text-emerald-200">4.</span> Harga & Pembayaran</h3>
+                        <div class="grid sm:grid-cols-2 gap-3">
+                            <div class="bg-white/10 p-3 rounded-xl border border-white/20">
+                                <p class="text-[11px] leading-tight mb-2">Harga web tetap (fixed). Dapat berubah sewaktu-waktu.</p>
+                                <p class="text-[11px] leading-tight text-emerald-200 font-medium">Desain custom/khusus harga menyesuaikan kerumitan.</p>
+                            </div>
+                            <div class="bg-white/10 p-3 rounded-xl border border-white/20">
+                                <p class="text-[11px] leading-tight font-bold text-white mb-1">Jika punya desain sendiri:</p>
+                                <p class="text-[11px] leading-tight text-emerald-100">Dapat langsung bayar & wajib konfirmasi WA agar pesanan diproses.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Section 5 -->
+                <div class="col-span-1 md:col-span-12 bg-slate-100 p-6 rounded-[2rem] border border-slate-200">
+                    <h3 class="text-lg font-black text-slate-800 mb-4 tracking-tight flex items-center gap-2"><span class="text-emerald-600">5.</span> Ketentuan Desain & File</h3>
+                    <div class="grid md:grid-cols-3 gap-4">
+                        <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+                            <h4 class="text-[10px] font-black text-slate-500 uppercase mb-1">Tanggung Jawab File</h4>
+                            <p class="text-[11px] text-slate-700 leading-snug">Pengguna wajib pastikan resolusi sesuai, ukuran benar, dan tidak ada typo sebelum kirim.</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+                            <h4 class="text-[10px] font-black text-amber-500 uppercase mb-1">Disclaimer</h4>
+                            <p class="text-[11px] text-slate-700 leading-snug">Kami tidak bertanggung jawab atas salah desain pelanggan atau kesalahan file yang sudah disetujui cetak.</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+                            <h4 class="text-[10px] font-black text-red-500 uppercase mb-1">Larangan Keras</h4>
+                            <p class="text-[11px] text-slate-700 leading-snug">Dilarang mengirim konten melanggar hukum, SARA, pornografi, atau melanggar hak cipta.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- 6, 7, 8 -->
+                <div class="col-span-1 md:col-span-4 bg-white p-5 rounded-[1.5rem] border border-slate-200 shadow-sm">
+                    <h4 class="text-sm font-black mb-1 text-slate-800">6. Produksi</h4>
+                    <p class="text-[11px] text-slate-500 leading-tight">Waktu bergantung antrian, jumlah pesanan & jenis produk. Estimasi waktu bersifat perkiraan, bukan jaminan mutlak.</p>
+                </div>
+                <div class="col-span-1 md:col-span-4 bg-white p-5 rounded-[1.5rem] border border-slate-200 shadow-sm">
+                    <h4 class="text-sm font-black mb-1 text-slate-800">7. Pengiriman</h4>
+                    <p class="text-[11px] text-slate-500 leading-tight">Pengiriman via pihak ke-3. Risiko ekspedisi & keterlambatan (cuaca, force majeure) di luar tanggung jawab kami.</p>
+                </div>
+                <div class="col-span-1 md:col-span-4 bg-white p-5 rounded-[1.5rem] border border-slate-200 shadow-sm">
+                    <h4 class="text-sm font-black mb-1 text-slate-800">8. Minimal Order</h4>
+                    <p class="text-[11px] text-slate-500 leading-tight">Pesanan wajib sesuai ketentuan minimal pembelian di halaman produk (grid). Di bawah minimum tidak bisa diproses.</p>
+                </div>
+                <!-- 9 -->
+                <div class="col-span-1 md:col-span-12 bg-slate-900 border-2 border-emerald-500 p-6 rounded-[2rem] text-white shadow-xl relative overflow-hidden">
+                    <div class="relative z-10 flex flex-col md:flex-row gap-6 items-center">
+                        <div class="md:w-1/3">
+                            <div class="w-12 h-12 bg-emerald-500 rounded-xl flex items-center justify-center text-xl font-black mb-3">09</div>
+                            <h3 class="text-2xl font-black mb-1">Garansi & Komplain</h3>
+                            <p class="text-slate-400 text-[11px]">Berlaku untuk cacat produksi murni dari pihak kami.</p>
+                        </div>
+                        <div class="md:w-2/3 grid sm:grid-cols-2 gap-4 w-full">
+                            <div class="bg-white/5 p-4 rounded-2xl border border-white/10">
+                                <span class="text-[10px] font-bold text-emerald-400 uppercase mb-2 block flex items-center gap-1">Syarat Wajib</span>
+                                <ul class="space-y-1 text-[11px] text-slate-300">
+                                    <li>• Maksimal 1 x 24 jam setelah tiba.</li>
+                                    <li>• Video unboxing full (tanpa cut/edit).</li>
+                                    <li>• Foto produk yang jelas.</li>
+                                </ul>
+                            </div>
+                            <div class="bg-red-500/5 p-4 rounded-2xl border border-red-500/20">
+                                <span class="text-[10px] font-bold text-red-400 uppercase mb-2 block flex items-center gap-1">Hangus / Ditolak Jika</span>
+                                <ul class="space-y-1 text-[11px] text-slate-300">
+                                    <li>• Kesalahan desain/input dari pelanggan.</li>
+                                    <li>• Beda warna minor (layar vs cetak).</li>
+                                    <li>• Tanpa bukti unboxing sesuai standar.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 10, 11, 12 -->
+                <div class="col-span-1 md:col-span-4 bg-slate-50 p-5 rounded-2xl border border-slate-200">
+                    <h4 class="text-[11px] font-black uppercase text-slate-800 mb-2">10. Pembatalan & Refund</h4>
+                    <p class="text-[11px] text-slate-600 leading-tight">Tahap produksi = <strong class="text-red-500">Tidak bisa batal</strong>. Refund hanya berlaku jika terbukti cacat/kesalahan dari pihak Karya Sejahtera.</p>
+                </div>
+                <div class="col-span-1 md:col-span-4 bg-slate-50 p-5 rounded-2xl border border-slate-200">
+                    <h4 class="text-[11px] font-black uppercase text-slate-800 mb-2">11. Hak Cipta & HKI</h4>
+                    <p class="text-[11px] text-slate-600 leading-tight">Seluruh konten web (desain, logo, teks) milik Karya Sejahtera. Dilarang menyalin/menggunakan tanpa izin.</p>
+                </div>
+                <div class="col-span-1 md:col-span-4 bg-slate-50 p-5 rounded-2xl border border-slate-200">
+                    <h4 class="text-[11px] font-black uppercase text-slate-800 mb-2">12. Perubahan Ketentuan</h4>
+                    <p class="text-[11px] text-slate-600 leading-tight">Karya Sejahtera berhak mengubah syarat ini kapan saja. Perubahan berlaku sejak dipublikasikan di web.</p>
+                </div>
+                <!-- 13 -->
+                <div class="col-span-1 md:col-span-12 bg-emerald-600 text-white p-5 rounded-[1.5rem] flex flex-col md:flex-row justify-between items-center gap-4 shadow-lg">
+                    <div>
+                        <h4 class="text-[14px] font-black mb-1">13. Butuh Bantuan atau Komplain?</h4>
+                        <p class="text-[11px] text-emerald-100">Silakan hubungi kontak resmi kami jika ada pertanyaan atau kendala.</p>
+                    </div>
+                    <a href="https://wa.me/6285691023162" class="px-6 py-2 bg-white text-emerald-700 text-[11px] font-black rounded-lg uppercase tracking-wider hover:scale-105 transition-transform flex items-center gap-2 whitespace-nowrap">Hubungi WhatsApp</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer T&C (Checkbox) -->
+        <div class="relative z-20 px-6 py-6 md:px-10 bg-slate-50 border-t border-slate-200">
+            <div class="max-w-2xl mx-auto flex flex-col items-center">
+                <label class="flex items-start gap-3 mb-6 cursor-pointer group text-left">
+                    <div class="relative flex items-center justify-center mt-0.5">
+                        <input type="checkbox" id="agreeTermsCheckbox" onchange="toggleAgreeBtnTerms()" class="peer appearance-none w-5 h-5 border-2 border-slate-300 rounded-md checked:bg-indigo-600 checked:border-indigo-600 transition-all duration-200">
+                        <svg class="absolute w-3.5 h-3.5 text-white opacity-0 peer-checked:opacity-100 transition-opacity pointer-events-none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    </div>
+                    <span class="text-[12px] md:text-sm text-slate-600 leading-tight font-medium select-none group-hover:text-slate-900 transition-colors">
+                        Saya menyatakan telah memahami dan <span class="text-indigo-600 font-bold">setuju untuk tunduk</span> pada Syarat & Ketentuan yang berlaku.
+                    </span>
+                </label>
+                <button id="btnAgreeTerms" disabled onclick="handleFinalAgreeTerms()" class="group relative w-full sm:w-auto px-12 py-3.5 bg-slate-300 text-white rounded-2xl font-black text-xs tracking-widest uppercase shadow-none cursor-not-allowed transition-all duration-300">
+                    SAYA SETUJU & LANJUTKAN
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL 2: KEBIJAKAN PRIVASI KARYA SEJAHTERA (UPDATED) -->
+<div id="privacyModal" class="fixed inset-0 bg-slate-950/60 backdrop-blur-xl hidden flex items-center justify-center z-[130] p-4 font-sans">
+    <div class="relative bg-white w-full max-w-[1100px] max-h-[95vh] rounded-[2rem] shadow-[0_0_80px_rgba(79,70,229,0.15)] overflow-hidden flex flex-col animate-in fade-in zoom-in duration-500 border border-indigo-50">
+        
+        <!-- Ornamen Dekoratif -->
+        <div class="absolute top-0 left-0 -ml-32 -mt-32 w-64 h-64 bg-indigo-100/40 rounded-full blur-[80px] pointer-events-none"></div>
+
+        <!-- Header -->
+        <div class="relative z-20 px-6 py-4 md:px-10 md:py-6 bg-white/80 backdrop-blur-2xl border-b border-slate-100 flex justify-between items-center">
+            <div>
+                <div class="flex items-center gap-2 mb-1">
+                    <div class="p-1.5 bg-indigo-600 rounded-lg text-white shadow-md">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <span class="px-2 py-0.5 bg-indigo-50 text-indigo-700 text-[10px] font-black uppercase tracking-widest rounded-full border border-indigo-100">Privacy Protection</span>
+                </div>
+                <h2 class="text-2xl md:text-3xl font-black text-slate-900 tracking-tighter">Kebijakan <span class="text-transparent bg-clip-text bg-gradient-to-br from-indigo-600 to-violet-500">Privasi</span></h2>
+            </div>
+            <button onclick="closePrivacy()" class="p-2 bg-white hover:bg-slate-100 border border-slate-200 rounded-xl transition-all duration-300 group shadow-sm">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-slate-600 group-hover:rotate-90 transition-transform duration-300"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+            </button>
+        </div>
+
+        <!-- Content Area -->
+        <div class="relative z-10 flex-1 overflow-y-auto p-6 md:p-10 space-y-8 hide-scroll-bar">
+            
+            <p class="text-slate-500 text-sm font-medium leading-relaxed max-w-2xl">
+                Karya Sejahtera berkomitmen penuh untuk melindungi dan menjaga kerahasiaan data pribadi pengguna sesuai dengan standar privasi digital yang berlaku.
+            </p>
+
+            <!-- Row 1: Koleksi & Penggunaan (Grid 1 & 2) -->
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+                <!-- 1. Informasi yang Dikumpulkan -->
+                <div class="col-span-1 md:col-span-5 bg-slate-900 p-6 rounded-[2rem] text-white shadow-xl relative overflow-hidden">
+                    <h3 class="text-lg font-black mb-4 tracking-tight flex items-center gap-2">
+                        <span class="text-indigo-400">1.</span> Koleksi Data
+                    </h3>
+                    <div class="grid grid-cols-1 gap-2">
+                        <div class="p-3 bg-white/5 rounded-xl border border-white/10 text-[12px] font-medium flex items-center gap-2">
+                            <div class="w-1.5 h-1.5 rounded-full bg-indigo-400"></div> Nama & Email
+                        </div>
+                        <div class="p-3 bg-white/5 rounded-xl border border-white/10 text-[12px] font-medium flex items-center gap-2">
+                            <div class="w-1.5 h-1.5 rounded-full bg-indigo-400"></div> Nomor WhatsApp
+                        </div>
+                        <div class="p-3 bg-white/5 rounded-xl border border-white/10 text-[12px] font-medium flex items-center gap-2">
+                            <div class="w-1.5 h-1.5 rounded-full bg-indigo-400"></div> Alamat Pengiriman
+                        </div>
+                        <div class="p-3 bg-white/5 rounded-xl border border-white/10 text-[12px] font-medium flex items-center gap-2">
+                            <div class="w-1.5 h-1.5 rounded-full bg-indigo-400"></div> Info Transaksi & Website
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Penggunaan Informasi -->
+                <div class="col-span-1 md:col-span-7 bg-indigo-50/50 border border-indigo-100 p-6 rounded-[2rem]">
+                    <h3 class="text-lg font-black text-slate-800 mb-4 tracking-tight flex items-center gap-2">
+                        <span class="text-indigo-600">2.</span> Penggunaan Data
+                    </h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <div class="bg-white p-4 rounded-2xl border border-indigo-100 shadow-sm">
+                            <p class="text-[10px] font-bold text-indigo-600 uppercase mb-1">Operasional & CS</p>
+                            <p class="text-[11px] text-slate-500 leading-snug">Memproses pesanan, pengiriman, dan layanan bantuan pelanggan.</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-2xl border border-indigo-100 shadow-sm">
+                            <p class="text-[10px] font-bold text-indigo-600 uppercase mb-1">Komunikasi</p>
+                            <p class="text-[11px] text-slate-500 leading-snug">Menghubungi pelanggan terkait status pesanan secara langsung.</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-2xl border border-indigo-100 shadow-sm sm:col-span-2">
+                            <p class="text-[10px] font-bold text-indigo-600 uppercase mb-1">Pengembangan & Promo</p>
+                            <p class="text-[11px] text-slate-500 leading-snug">Meningkatkan layanan dan mengirimkan info promo (hanya jika Anda setuju).</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Row 2: Keamanan (3) -->
+            <div class="bg-slate-900 p-6 rounded-[2.5rem] flex flex-col md:flex-row items-center gap-6 shadow-xl border border-indigo-500/20">
+                <div class="w-16 h-16 bg-gradient-to-br from-indigo-500 to-violet-600 rounded-2xl flex-shrink-0 flex items-center justify-center text-white shadow-lg border-2 border-white/10">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                </div>
+                <div class="flex-1 text-center md:text-left">
+                    <h3 class="text-lg font-black text-white mb-1">3. Penyimpanan & Keamanan Data</h3>
+                    <p class="text-[13px] text-slate-400 leading-relaxed">
+                        Data disimpan menggunakan sistem keamanan standar. Kami berupaya keras melindungi dari akses tidak sah atau kebocoran, namun keamanan digital <span class="text-indigo-400">100% tidak dapat dijamin secara mutlak</span>.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Row 3: Grid (4, 5, 6) -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="p-5 bg-white border border-slate-100 rounded-[2rem] shadow-sm">
+                    <h4 class="font-black text-slate-800 text-sm mb-2 flex items-center gap-2">
+                        <span class="text-indigo-600">4.</span> Pembagian Informasi
+                    </h4>
+                    <p class="text-[12px] text-slate-500 leading-relaxed">Data hanya diberikan kepada kurir, partner operasional, atau hukum. Kami <span class="text-red-500 font-bold">tidak menjual</span> data Anda.</p>
+                </div>
+                <div class="p-5 bg-white border border-slate-100 rounded-[2rem] shadow-sm">
+                    <h4 class="font-black text-slate-800 text-sm mb-2 flex items-center gap-2">
+                        <span class="text-indigo-600">5.</span> Penggunaan Cookies
+                    </h4>
+                    <p class="text-[12px] text-slate-500 leading-relaxed">Digunakan untuk preferensi dan analitik. Anda dapat mengatur kontrol cookies melalui browser.</p>
+                </div>
+                <div class="p-5 bg-white border border-slate-100 rounded-[2rem] shadow-sm">
+                    <h4 class="font-black text-slate-800 text-sm mb-2 flex items-center gap-2">
+                        <span class="text-indigo-600">6.</span> Hak Kontrol Pengguna
+                    </h4>
+                    <p class="text-[12px] text-slate-500 leading-relaxed">Anda berhak mengakses, memperbarui, atau meminta <span class="text-indigo-600 font-bold">penghapusan data</span> pribadi Anda.</p>
+                </div>
+            </div>
+
+            <!-- Row 4: Grid (7, 8) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="p-5 bg-indigo-50/30 border border-indigo-100 rounded-[2rem]">
+                    <h4 class="font-black text-slate-800 text-sm mb-2">7. Retensi Data</h4>
+                    <p class="text-[12px] text-slate-500">Data disimpan selama diperlukan untuk layanan atau sesuai dengan ketentuan hukum yang berlaku.</p>
+                </div>
+                <div class="p-5 bg-indigo-50/30 border border-indigo-100 rounded-[2rem]">
+                    <h4 class="font-black text-slate-800 text-sm mb-2">8. Perubahan Kebijakan</h4>
+                    <p class="text-[12px] text-slate-500">Kebijakan dapat diperbarui sewaktu-waktu tanpa pemberitahuan untuk mengikuti regulasi terbaru.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer (Point 9 & Button) -->
+        <div class="relative z-20 px-6 py-6 md:px-10 bg-slate-50 border-t border-slate-200">
+            <div class="max-w-2xl mx-auto flex flex-col items-center">
+                <label class="flex items-start gap-3 mb-6 cursor-pointer group text-left">
+                    <div class="relative flex items-center justify-center mt-0.5">
+                        <input type="checkbox" id="agreePrivacyCheckbox" onchange="toggleAgreeBtnPrivacy()" class="peer appearance-none w-5 h-5 border-2 border-slate-300 rounded-md checked:bg-indigo-600 checked:border-indigo-600 transition-all duration-200">
+                        <svg class="absolute w-3.5 h-3.5 text-white opacity-0 peer-checked:opacity-100 transition-opacity pointer-events-none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    </div>
+                    <span class="text-[12px] md:text-sm text-slate-600 leading-tight font-medium select-none group-hover:text-slate-900 transition-colors">
+                        Saya menyatakan telah membaca dan <span class="text-indigo-600 font-bold">menyetujui sepenuhnya</span> seluruh poin Kebijakan Privasi di atas.
+                    </span>
+                </label>
+                <button id="btnAgreePrivacy" disabled onclick="handleFinalAgreePrivacy()" class="group relative w-full sm:w-auto px-12 py-3.5 bg-slate-300 text-white rounded-2xl font-black text-xs tracking-widest uppercase shadow-none transition-all duration-300 active:scale-95">
+                    SAYA MENGERTI SETUJU
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer class="relative bg-white border-t border-slate-200 mt-10 pt-16 pb-16 overflow-hidden font-sans">
+    <div class="absolute top-0 right-10 w-[400px] h-[400px] bg-emerald-50 rounded-full blur-[100px] pointer-events-none"></div>
+
+    <div class="container mx-auto px-4 relative z-10">
+        <div class="max-w-4xl mx-auto relative group">
+            
+            <div class="absolute -inset-0.5 bg-gradient-to-r from-emerald-400 to-teal-500 rounded-[2.5rem] blur opacity-30 group-hover:opacity-60 transition duration-500"></div>
+            
+            <div class="relative bg-white border border-slate-200 rounded-[2.5rem] p-8 md:p-10 shadow-2xl shadow-slate-200/50 overflow-hidden">
+                
+                <div class="absolute inset-0 -translate-x-full w-[200%] h-full bg-gradient-to-r from-transparent via-emerald-50/50 to-transparent skew-x-[-30deg] animate-[shimmer_3s_infinite_ease-in-out] pointer-events-none z-0"></div>
+
+                <div class="flex flex-col md:flex-row items-center justify-between gap-8 relative z-10">
+                    
+                    <div class="flex-1 text-center md:text-left space-y-4">
+                        <div class="inline-flex items-center gap-2 px-4 py-1.5 bg-emerald-100/50 border border-emerald-300 rounded-full">
+                            <span class="relative flex h-2.5 w-2.5">
+                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-600 opacity-75"></span>
+                                <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-600"></span>
+                            </span>
+                            <span class="text-[10px] font-extrabold text-emerald-800 uppercase tracking-widest">Live Tracking Aktif</span>
+                        </div>
+                        
+                        <h4 class="text-3xl md:text-4xl font-black text-slate-900 tracking-tight">
+                            Statistik <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-600">Pengunjung</span>
+                        </h4>
+                        
+                        <p class="text-slate-600 text-sm font-medium leading-relaxed max-w-sm">
+                            Data jangkauan pasar <strong class="text-slate-900 font-bold">Karya Sejahtera</strong> secara real-time yang terpantau dari berbagai wilayah.
+                        </p>
+                    </div>
+
+                    <div class="relative flex flex-col items-center animate-[float_4s_ease-in-out_infinite]">
+                        <div class="bg-white p-4 rounded-3xl border border-slate-200 shadow-xl shadow-slate-100 relative group-hover:border-emerald-300 group-hover:shadow-emerald-100 transition-all duration-300">
+                            <a href="https://info.flagcounter.com/or6g" class="block relative z-10">
+                                <img src="https://s01.flagcounter.com/count/or6g/bg_FFFFFF/txt_000000/border_FFFFFF/columns_3/maxflags_12/viewers_0/labels_1/pageviews_1/flags_0/percent_0/" 
+                                     alt="Flag Counter" 
+                                     border="0"
+                                     class="rounded-lg transition-transform duration-300 group-hover:scale-105">
+                            </a>
+                        </div>
+                        
+                        <div class="mt-4 flex items-center gap-3">
+                            <div class="h-[2px] w-6 bg-slate-200 rounded-full"></div>
+                            <span class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Global Verified</span>
+                            <div class="h-[2px] w-6 bg-slate-200 rounded-full"></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<style>
+    /* Animasi Kilapan Cahaya (Menyapu dari kiri ke kanan) */
+    @keyframes shimmer {
+        0% { transform: translateX(-150%) skewX(-30deg); }
+        50% { transform: translateX(150%) skewX(-30deg); }
+        100% { transform: translateX(150%) skewX(-30deg); } /* Jeda sebentar sebelum mengulang */
+    }
+
+    /* Animasi Kotak Melayang (Biar kelihatan hidup) */
+    @keyframes float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-8px); }
+    }
+</style>
+
+    <script>
+      // ================= OPENING ANIMATION (GSAP) =================
+      document.addEventListener("DOMContentLoaded", () => {
+        // Membuat timeline animasi menggunakan GSAP
+        const tl = gsap.timeline();
+
+        // 1. Efek Print Head (Tinta) bergerak dari kiri ke kanan dengan kecepatan tinggi
+        tl.to(
+          "#print-head-cyan",
+          { x: "100%", duration: 1.2, ease: "power2.inOut" },
+          0,
+        )
+          .to(
+            "#print-head-magenta",
+            { x: "100%", duration: 1.2, ease: "power2.inOut" },
+            0.1,
+          )
+          .to(
+            "#print-head-yellow",
+            { x: "100%", duration: 1.2, ease: "power2.inOut" },
+            0.2,
+          )
+
+          // 2. Teks "Karya Sejahtera" muncul perlahan dari kiri ke kanan (Seolah sedang dicetak)
+          .to(
+            "#logo-text",
+            {
+              opacity: 1,
+              clipPath: "inset(0 0% 0 0)", // Membuka masking dari kiri ke kanan
+              duration: 3.5,
+              ease: "power2.out",
+            },
+            0.5,
+          ) // Animasi ini mulai jalan saat tinta magenta/kuning sedang lewat
+
+          // 3. Tagline muncul dari bawah
+          .to(
+            "#tagline-text",
+            {
+              opacity: 1,
+              y: -10, // Bergerak naik sedikit
+              duration: 2.3,
+              ease: "back.out(1.7)",
+            },
+            "-=0.3",
+          )
+
+          // 4. Jeda sebentar agar user bisa melihat logonya dengan jelas (1 detik)
+          .to({}, { duration: 1 })
+
+          // 5. Layar opening ditarik ke atas dengan mulus untuk memperlihatkan website
+          .to("#opening", {
+            y: "-100%",
+            duration: 1.2,
+            ease: "power3.inOut",
+            onComplete: () => {
+              // Sembunyikan elemen secara permanen setelah animasi selesai agar tidak menutupi klik
+              document.getElementById("opening").style.display = "none";
+            },
+          });
+      });
+
+      // ================= AUTHENTICATION LOGIC =================
+      let isLoginMode = true;
+
+      function openAuth() {
+        document.getElementById("authModal").classList.remove("hidden");
+        // Reset form setiap kali dibuka
+        document.getElementById("authEmail").value = "";
+        document.getElementById("authPassword").value = "";
+        if (!isLoginMode) toggleAuthMode(); // Pastikan selalu mulai dari mode Login
+      }
+
+      function closeAuth() {
+        document.getElementById("authModal").classList.add("hidden");
+      }
+
+      function toggleAuthMode() {
+        isLoginMode = !isLoginMode;
+
+        const title = document.getElementById("authTitle");
+        const btn = document.getElementById("authSubmitBtn");
+        const regFields = document.getElementById("registerFields");
+        const toggleText = document.getElementById("authToggleText");
+        const toggleAction = document.getElementById("authToggleAction");
+
+        if (isLoginMode) {
+          // Mode Login
+          title.innerText = "Login";
+          btn.innerText = "Masuk";
+          regFields.classList.add("hidden");
+          toggleText.innerText = "Belum punya akun?";
+          toggleAction.innerText = "Daftar di sini";
+        } else {
+          // Mode Daftar
+          title.innerText = "Daftar Akun Baru";
+          btn.innerText = "Daftar Sekarang";
+          regFields.classList.remove("hidden");
+          toggleText.innerText = "Sudah punya akun?";
+          toggleAction.innerText = "Masuk";
+        }
+      }
+
+      function submitAuth() {
+        const email = document.getElementById("authEmail").value;
+        const pass = document.getElementById("authPassword").value;
+
+        if (!email || !pass) {
+          alert("Harap isi email dan password!");
+          return;
+        }
+
+        if (isLoginMode) {
+          // Logika jika Login
+          alert("Berhasil login dengan email: " + email);
+          closeAuth();
+        } else {
+          // Logika jika Daftar
+          const name = document.getElementById("authName").value;
+          if (!name) {
+            alert("Harap isi nama lengkap!");
+            return;
+          }
+          alert(
+            "Berhasil mendaftar! Selamat datang " + name + ", silakan login.",
+          );
+          toggleAuthMode(); // Lempar kembali ke halaman login setelah berhasil daftar
+        }
+      }
+
+      // ================= ANIMASI HERO SECTION =================
+      gsap.from(".hero-anim", {
+        y: 100, // Jarak muncul lebih jauh agar gerakannya lebih kentara
+        scale: 0.5, // Mulai dari ukuran yang lebih kecil
+        opacity: 10,
+        rotation: 10, // Sedikit miring 10 derajat saat mulai muncul
+        transformOrigin: "left center", // Titik pusat putaran dari sebelah kiri
+        duration: 5, // Diperlambat sedikit agar efek pantulannya terlihat
+        stagger: 0.5, // Jarak antar elemen agak dijauhkan
+        ease: "elastic.out(2, 0.5)", // Menggunakan ease 'elastic' agar efek memantulnya lebih bergetar hebat
+        delay: 6.5,
+      });
+    </script>
+
+    <script>
+      // ================= DATA SELLER =================
+      const sellers = [
+        {
+          id: 1,
+          name: "Karya Sejahtera Printing",
+          city: "Jakarta Timur",
+          maps: "https://maps.app.goo.gl/DwKJJ3oirzUKfuucA",
+        },
+      ];
+
+      // ================= DATA PRODUK BARU =================
+      const products = [
+        // --- 1. PROMOSI ---
+        {
+          id: 1,
+          name: "Flyer / Brosur",
+          basePrice: 400,
+          category: "Promosi",
+          image:
+            "brosur.png",
+          minQty: 10,
+          options: {
+            Ukuran: [
+              { name: "A6", price: 0 },
+              { name: "1/3 A4", price: 100 },
+              { name: "A5", price: 200 },
+            ],
+            Bahan: [
+              { name: "Art Paper", price: 0 },
+              { name: "Art Carton", price: 200 },
+            ],
+            Lipatan: [
+              { name: "Tanpa Lipat", price: 0 },
+              { name: "Bi-Fold", price: 100 },
+              { name: "Tri-Fold", price: 200 },
+              { name: "Z-Fold", price: 200 },
+            ],
+            Sisi: [
+              { name: "1 Sisi", price: 0 },
+              { name: "2 Sisi", price: 200 },
+            ],
+            Finishing: [
+              { name: "Tanpa Laminasi", price: 0 },
+              { name: "Laminasi Glossy", price: 200 },
+              { name: "Laminasi Doff", price: 200 },
+            ],  
+  }  
+},
+        {
+          id: 2,
+          name: "Poster",
+          category: "Promosi",
+          basePrice: 4000,
+          image:
+            "poster.png",
+          minQty: 3,
+          options: {
+            Ukuran: [
+              { name: "A4", price: 0 },
+              { name: "A3", price: 4000 },
+              { name: "A2", price: 13000 },
+              { name: "A1", price: 25000 },
+            ],
+            Bahan: [
+              { name: "Art Paper", price: 0 },
+              { name: "Art Carton", price: 1000 },
+              { name: "Albatros", price: 2000 },
+            ],
+            Finishing: [
+              { name: "Tanpa Laminasi", price: 0 },
+              { name: "Laminasi Glossy", price: 500 },
+              { name: "Laminasi Doff", price: 500 },
+            ],
+            }  
+},
+        {
+          id: 12,
+          name: "Booklet",
+          category: "Promosi",
+          basePrice: 5000,
+          image:
+            "booklet.png",
+          minQty: 3,
+          options: {
+            Ukuran: [
+              { name: "A6", price: 0 },
+              { name: "A5", price: 6000 },
+              { name: "A4", price: 15000 },
+            ],
+            Isi: [
+              { name: "HVS", price: 0 },
+              { name: "Art Paper", price: 2000 },
+            ],
+            Halaman: [
+              { name: "5-10 Halaman", price: 0 },
+              { name: "11-20 Halaman", price: 2000 },
+              { name: "21-30 Halaman", price: 4000 },
+              { name: "31-40 Halaman", price: 6000 },
+            ],
+            Sisi: [
+              { name: "1 Sisi", price: 0 },
+              { name: "2 Sisi", price: 2000 },
+            ],
+            Cover: [
+              { name: "Art Paper", price: 0 },
+              { name: "Art Carton", price: 1000 },
+              { name: "Ivory", price: 3000 },
+            ],
+            Finishing: [
+              { name: "Tanpa Laminasi", price: 0 },
+              { name: "Laminasi Glossy", price: 1000 },
+              { name: "Laminasi Doff", price: 1000 },
+            ],
+            Binding: [
+              { name: "Saddle Stitch", price: 0 },
+              { name: "Perfect Binding", price: 1000 },
+            ],
+           }  
+},
+
+        // --- 2. PACKAGING & LABEL ---
+        {
+          id: 3,
+          name: "Stiker / Label",
+          category: "Packaging & Label",
+          basePrice: 2000, // Mulai Dari (A5)
+          image: "stiker n label.png",
+          minQty: 3,
+          options: {
+            Bahan: [
+              { name: "HVS", price: 0 }, 
+              { name: "Chromo", price: 500 },
+              { name: "Vinyl", price: 1000 },
+            ],
+            Lembar: [
+              { name: "A5", price: 0 },
+              { name: "A4", price: 2000 },
+              { name: "A3", price: 4000 }, 
+            ],
+            Potong: [
+              { name: "Kiss Cut", price: 0 },
+              { name: "Die Cut", price: 1000 },
+            ],
+            Finishing: [
+              { name: "Tanpa Laminasi", price: 0 },
+              { name: "Laminasi Glossy", price: 1000 },
+              { name: "Laminasi Doff", price: 1000 },
+              { name: "Laminasi Anti Gores", price: 2000 },
+            ],
+              }  
+},
+        {
+          id: 4,
+          name: "Hang Tag",
+          category: "Packaging & Label",
+          basePrice: 500,
+          image:
+            "hang tag.png",
+          minQty: 10,
+          options: {
+            Ukuran: [
+              { name: "4 x 6 cm", price: 0 },
+              { name: "5 x 9 cm", price: 50 },
+              { name: "7 x 12 cm", price: 100 },
+            ],
+            Bahan: [
+              { name: "Kraft Paper", price: 0 },
+              { name: "Art Carton", price: 100 },
+              { name: "Fancy Paper", price: 200 },
+            ],
+            Sisi: [
+              { name: "1 Sisi", price: 0 },
+              { name: "2 Sisi", price: 200 },
+            ],
+            Finishing: [
+              { name: "Tanpa Laminasi", price: 0 },
+              { name: "Laminasi Glossy", price: 200 },
+              { name: "Laminasi Doff", price: 200 },
+            ],
+            Tambahan: [
+              { name: "Lubang", price: 0 },
+              { name: "Eyelet (Ring Besi)", price: 200 },
+            ],
+            }  
+},
+        {
+          id: 5,
+          name: "Paper Sleeve",
+          category: "Packaging & Label",
+          basePrice: 500,
+          image:
+            "papper sleeve.png",
+          minQty: 10,
+          options: {
+            Ukuran: [
+              { name: "26 x 5 cm", price: 0 },
+              { name: "30 x 10 cm", price: 100 },
+            ],
+            Bahan: [
+              { name: "Kraft Paper", price: 0 },
+              { name: "Art Paper", price: 100 },
+              { name: "Art Carton", price: 200 },
+            ],
+            Finishing: [
+              { name: "Tanpa Laminasi", price: 0 },
+              { name: "Laminasi Glossy", price: 100 },
+              { name: "Laminasi Doff", price: 100 },
+            ],
+            }  
+},
+        {
+          id: 6,
+          name: "Kertas Kado",
+          category: "Packaging & Label",
+          basePrice: 4000,
+          image:
+            "kertas kado.png",
+          minQty: 2,
+          options: {
+            Ukuran: [
+              { name: "32 x 48 cm", price: 0 },
+              { name: "50 x 60 cm", price: 1500 },
+              { name: "70 x 100 cm", price: 2500 },
+            ],
+            Bahan: [
+              { name: "HVS", price: 0 },
+              { name: "Kraft Paper", price: 500 },
+              { name: "Art Paper", price: 1000 },
+            ],
+            Warna: [
+              { name: "Pink", price: 0 },
+              { name: "Biru", price: 0 },
+              { name: "Hijau", price: 0 },
+              { name: "Custom Color", price: 0 },
+            ],
+            Sisi: [
+              { name: "1 Sisi", price: 0 },
+              { name: "2 Sisi", price: 2000 },
+            ],
+            }  
+},
+
+        // --- 3. BUSINESS & ADMINISTRATIVE ---
+        {
+          id: 7,
+          name: "Kartu Nama",
+          category: "Business & Administrative",
+          basePrice: 300,
+          image:
+            "kartu nama.png",
+          minQty: 20,
+          options: {
+            Ukuran: [
+              { name: "8 x 5.5 cm", price: 0 },
+              { name: "9 x 5.5 cm", price: 50 },
+            ],
+            Bahan: [
+              { name: "Art Carton", price: 0 },
+              { name: "PVC Card", price: 4500 },
+            ],
+            Sisi: [
+              { name: "1 Sisi", price: 0 },
+              { name: "2 Sisi", price: 200 },
+            ],
+            Finishing: [
+              { name: "Tanpa Laminasi", price: 0 },
+              { name: "Laminasi Glossy", price: 100 },
+              { name: "Laminasi Doff", price: 100 },
+              { name: "Laminasi Anti Gores", price: 300 },
+            ],
+            Sudut: [
+              { name: "Siku", price: 0 },
+              { name: "Rounded Corner", price: 0 },
+            ],
+            }  
+},
+        {
+          id: 8,
+          name: "Amplop",
+          category: "Business & Administrative",
+          basePrice: 500,
+          image:
+            "amplop.png",
+          minQty: 10,
+          options: {
+            Ukuran: [
+              { name: "9.5 x 15 cm", price: 0 },
+              { name: "11 x 23 cm", price: 300 },
+              { name: "24 x 35 cm", price: 1000 },
+            ],
+            Bahan: [
+              { name: "HVS", price: 0 },
+              { name: "Kraft Paper", price: 100 },
+              { name: "Fancy Paper", price: 300 },
+            ],
+            Jenis: [
+              { name: "Tanpa Jendela", price: 0 },
+              { name: "Dengan Jendela", price: 200 },
+            ],
+            Sisi: [
+              { name: "1 Sisi", price: 0 },
+              { name: "2 Sisi", price: 200 },
+            ],
+            }  
+},
+        {
+          id: 9,
+          name: "Sertifikat",
+          category: "Business & Administrative",
+          basePrice: 3000,
+          image:
+            "sertifikat.png",
+          minQty: 3,
+          options: {
+            Ukuran: [
+              { name: "A5", price: 0 },
+              { name: "A4", price: 1500 },
+              { name: "F4", price: 4000 },
+            ],
+            Bahan: [
+              { name: "Art Carton", price: 0 },
+              { name: "Fancy Paper", price: 500 },
+            ],
+            Finishing: [
+              { name: "Tanpa Laminasi", price: 0 },
+              { name: "Laminasi Glossy", price: 300 },
+              { name: "Laminasi Doff", price: 300 },
+            ],
+            }  
+},
+
+        // --- 4. STATIONERY ---
+        {
+          id: 10,
+          name: "Notebook",
+          category: "Stationery",
+          basePrice: 8000,
+           image:
+            "notebook.png",
+          minQty: 2,
+           options: {
+            Ukuran: [
+              { name: "A6", price: 0 },
+              { name: "A5", price: 4000 },
+              { name: "B5", price: 7000 },
+              { name: "A4", price: 10000 },
+            ],
+            Isi: [
+              { name: "HVS", price: 0 },
+              { name: "Book Paper", price: 4000 },
+              { name: "Art Paper", price: 7000 },
+            ],
+            Jenis: [
+              { name: "Polos", price: 0 },
+              { name: "Garis", price: 0 },
+              { name: "Kotak", price: 0 },
+              { name: "Dot Grid", price: 0 },
+            ],
+            Halaman: [
+              { name: "50 Halaman", price: 0 },
+              { name: "80 Halaman", price: 5000 },
+              { name: "100 Halaman", price: 8000 },
+            ],
+            Cover: [
+              { name: "Art Paper", price: 0 },
+              { name: "Kraft", price: 500 },
+              { name: "Art Carton", price: 1500 },
+              { name: "Ivory", price: 2000 },
+              { name: "Hard Cover", price: 6000 },
+            ],
+            Binding: [
+              { name: "Spiral Plastik", price: 0 },
+              { name: "Spiral Kawat", price: 1000 },
+            ],
+            Finishing: [
+              { name: "Tanpa Laminasi", price: 0 },
+              { name: "Laminasi Glossy", price: 1000 },
+              { name: "Laminasi Doff", price: 1000 },
+            ],
+            }  
+},
+        {
+          id: 11,
+          name: "Bookmark",
+          category: "Stationery",
+          basePrice: 2000,
+          image:
+            "bookmark.png",
+          minQty: 3,
+          options: {
+            Ukuran: [
+              { name: "5 x 15 cm", price: 0 },
+              { name: "6 x 18 cm", price: 200 },
+            ],
+            Bahan: [
+              { name: "Art Carton", price: 0 },
+              { name: "Ivory", price: 200 },
+              { name: "Fancy Paper", price: 400 },
+            ],
+             Sisi: [
+              { name: "1 Sisi", price: 0 },
+              { name: "2 Sisi", price: 200 },
+          ],
+            Finishing: [
+              { name: "Tanpa Laminasi", price: 0 },
+              { name: "Laminasi Glossy", price: 100 },
+              { name: "Laminasi Doff", price: 100 },
+            ],
+            Tambahan: [
+              { name: "Tanpa Tali", price: 0 },
+              { name: "Tassel (Tali)", price: 500 },
+            ],
+           }  
+},
+
+        // --- 5. GREETING & GIFT ---
+        {
+          id: 13,
+          name: "Greeting Card",
+          category: "Greeting & Gift",
+          basePrice: 500,
+          image:
+            "greeting card.png",
+          minQty: 10,
+          options: {
+            Ukuran: [
+              { name: "10 x 7 cm", price: 0 },
+              { name: "10 x 10 cm", price: 500 },
+              { name: "A6", price: 1500 },
+              { name: "A5", price: 2500 },
+            ],
+            Bahan: [
+              { name: "Art Carton", price: 0 },
+              { name: "Linen Paper", price: 500 },
+              { name: "Jasmine Paper", price: 1000 },
+              { name: "Constellation", price: 1500 },
+            ],
+            Model: [
+              { name: "Single (1 Sisi)", price: 0 },
+              { name: "Lipat 2 (Bi-Fold)", price: 1000 },
+            ],
+            Sisi: [
+              { name: "1 Sisi", price: 0 },
+              { name: "2 Sisi", price: 1000 },
+            ],
+            Finishing: [
+              { name: "Tanpa Laminasi", price: 0 },
+              { name: "Laminasi Glossy", price: 200 },
+              { name: "Laminasi Doff", price: 200 },
+            ],
+            }  
+},
+        {
+          id: 14,
+          name: "Gift Box",
+          category: "Greeting & Gift",
+          basePrice: 5000,
+          image: "gift box.png",
+          minQty: 3,
+          options: {
+            Ukuran: [
+              { name: "Small (10 x 10 x 5 cm)", price: 0 },
+              { name: "Medium (20 x 20 x 7 cm)", price: 5000 },
+              { name: "Large (30 x 30 x 10 cm)", price: 10000 },
+            ],
+            Bahan: [
+              { name: "Art Carton", price: 0 },
+              { name: "Kraft Liner", price: 2000 },
+              { name: "Corrugated E-Flute", price: 5000 },
+              { name: "Hardbox", price: 12000 },
+            ],
+            Finishing: [
+              { name: "Tanpa Laminasi", price: 0 },
+              { name: "Laminasi Glossy", price: 2000 },
+              { name: "Laminasi Doff", price: 2000 },
+            ],
+            Tambahan: [
+              { name: "Tanpa Tambahan", price: 0 },
+              { name: "Pita", price: 2000 },
+              { name: "Kertas Serut", price: 2000 },
+              { name: "Pita + Kertas Serut", price: 4000 },
+            ],
+            }  
+},
+      ];
+
+      // ================= RENDER PRODUK =================
+      function renderProducts(data = products) {
+  const grid = document.getElementById("productGrid");
+
+  grid.innerHTML = data
+    .map(
+      (p) => `
+  <div id="produk-card-${p.id}" class="bg-white p-4 rounded-2xl shadow hover:shadow-lg transition card">
+
+      <img src="${p.image}" class="w-full h-40 object-cover rounded-xl mb-3">
+
+            <h3 class="font-bold text-sm">${p.name}</h3>
+
+            <p class="text-green-600 font-bold mb-2">
+                Mulai Rp ${p.basePrice.toLocaleString("id-ID")}
+            </p>
+
+            <p class="text-xs text-slate-400 mb-3">
+                ${p.category}
+            </p>
+
+            <button onclick="openDetail(${p.id})"
+                class="w-full bg-green-600 text-white py-2 rounded-xl text-sm">
+                Lihat Detail
+            </button>
+
+        </div>
+    `,
+          )
+          .join("");
+      }
+
+      // ================= STATE =================
+      let selectedProduct = null;
+      let selectedOptions = {};
+      let qty = 1;
+      let extraPrice = 0;
+
+      // ================= CHECKOUT STATE =================
+      let cart = [];
+
+      let customer = {
+        name: "",
+        phone: "",
+        email: "",
+        address: "",
+      };
+
+      let shippingMethod = "";
+      let paymentMethod = "";
+      let shippingCost = 0;
+
+      // ================= OPEN MODAL =================
+      function openDetail(id) {
+  selectedProduct = products.find((p) => p.id === id);
+  selectedOptions = {};
+  
+  // ATURAN BARU: Qty mulai dari minQty produk, jika tidak ada default 1
+  qty = selectedProduct.minQty || 1; 
+  extraPrice = 0;
+
+  document.getElementById("productModal").classList.remove("hidden");
+  document.getElementById("modalTitle").innerText = selectedProduct.name;
+  document.getElementById("modalImage").src = selectedProduct.image;
+  
+  // Update angka di layar
+  document.getElementById("qty").innerText = qty;
+
+  // Tampilkan info minimal pembelian jika lebih dari 1
+  const minText = document.getElementById("modalMinQtyText");
+  if (selectedProduct.minQty > 1) {
+    minText.innerText = "* Minimal pembelian: " + selectedProduct.minQty + " pcs";
+    minText.classList.remove("hidden");
+  } else {
+    minText.classList.add("hidden");
+  }
+
+  // Bagian catatan (Note) tetap seperti aslinya
+  const noteEl = document.getElementById("modalCustomNote");
+  if (selectedProduct.note) {
+    noteEl.innerText = selectedProduct.note;
+    noteEl.classList.remove("hidden");
+  } else {
+    noteEl.classList.add("hidden");
+  }
+
+  renderOptions();
+  updatePrice();
+}
+
+      // ================= RENDER OPSI =================
+      function renderOptions() {
+        const container = document.getElementById("productOptions");
+        container.innerHTML = "";
+
+        const opts = selectedProduct.options;
+
+        for (let key in opts) {
+          let html = `
+        <div>
+            <p class="font-semibold mb-1 capitalize">${key}</p>
+            <div class="flex flex-wrap gap-2">
+        `;
+
+          opts[key].forEach((opt) => {
+            let name = typeof opt === "object" ? opt.name : opt;
+            let price = typeof opt === "object" ? opt.price || 0 : 0;
+
+            html += `
+                <button 
+                    onclick="selectOption('${key}','${name}',${price}, this)"
+                    class="border px-3 py-1 rounded option-btn hover:bg-green-600 hover:text-white transition">
+                    ${name}
+                </button>
+            `;
+          });
+
+          html += "</div></div>";
+          container.innerHTML += html;
+        }
+      }
+
+      // ================= PILIH OPSI =================
+      function selectOption(key, value, price, el) {
+        selectedOptions[key] = { value, price };
+
+        // reset tombol dalam group yang sama
+        el.parentElement.querySelectorAll(".option-btn").forEach((btn) => {
+          btn.classList.remove("bg-green-600", "text-white");
+        });
+
+        // highlight yg dipilih
+        el.classList.add("bg-green-600", "text-white");
+
+        updatePrice();
+      }
+
+      // ================= QUANTITY =================
+      function changeQty(val) {
+  const batasMinimal = selectedProduct.minQty || 1;
+  
+  // Jika sedang di posisi minimal dan user menekan minus
+  if (val < 0 && qty <= batasMinimal) {
+    alert("Maaf, minimal pembelian untuk " + selectedProduct.name + " adalah " + batasMinimal + " pcs.");
+    return; // Berhenti, jangan kurangi angka
+  }
+  
+  qty += val;
+  document.getElementById("qty").innerText = qty;
+  updatePrice();
+}
+
+      // ================= HITUNG HARGA =================
+      function updatePrice() {
+        if (!selectedProduct) return;
+
+        let total = selectedProduct.basePrice;
+        extraPrice = 0;
+
+        for (let key in selectedOptions) {
+          extraPrice += selectedOptions[key].price;
+        }
+
+        total += extraPrice;
+        total *= qty;
+
+        document.getElementById("modalPrice").innerText =
+          "Mulai Dari: Rp " + selectedProduct.basePrice.toLocaleString("id-ID");
+
+        // BAGIAN INI YANG DIPERBAIKI (totalPrice diubah jadi modalTotal)
+        document.getElementById("modalTotal").innerText =
+          "Total: Rp " + total.toLocaleString("id-ID");
+      }
+
+      // ================= CLOSE =================
+      function closeModal() {
+        document.getElementById("productModal").classList.add("hidden");
+      }
+
+      // ================= ABOUT US MODAL =================
+      function openAbout() {
+        document.getElementById("aboutModal").classList.remove("hidden");
+      }
+
+      function closeAbout() {
+        document.getElementById("aboutModal").classList.add("hidden");
+      }
+
+      function addToCart() {
+        // --- TAMBAHAN LOGIKA VALIDASI WAJIB PILIH ---
+        // 1. Ambil daftar semua nama kategori opsi yang wajib dipilih untuk produk ini
+        const requiredOptions = Object.keys(selectedProduct.options);
+
+        // 2. Cek opsi apa saja yang belum diklik/dipilih oleh user
+        const missingOptions = [];
+        for (let i = 0; i < requiredOptions.length; i++) {
+          const key = requiredOptions[i];
+          if (!selectedOptions[key]) {
+            missingOptions.push(key);
+          }
+        }
+
+        // 3. Jika ada opsi yang belum dipilih, tampilkan peringatan dan hentikan proses
+        if (missingOptions.length > 0) {
+          alert("Eits, tunggu dulu! Harap pilih varian berikut sebelum menambahkan ke keranjang:\n\n- " + missingOptions.join("\n- "));
+          return; // Menghentikan fungsi agar produk tidak masuk ke keranjang
+        }
+        // ---------------------------------------------
+
+        // Jika semua opsi sudah dipilih, jalankan proses masukkan ke keranjang seperti biasa
+        const item = {
+          name: selectedProduct.name,
+          qty: qty,
+          options: selectedOptions,
+          total: calculateTotal(),
+        };
+
+        cart.push(item);
+        renderCart();
+
+        alert("Produk berhasil masuk keranjang! 🛒");
+        
+        // Opsional: Tutup modal otomatis setelah berhasil masuk keranjang agar UX lebih mulus
+        closeModal(); 
+      }
+
+      // HITUNG TOTAL (dipakai cart)
+      function calculateTotal() {
+        let total = selectedProduct.basePrice;
+
+        for (let key in selectedOptions) {
+          total += selectedOptions[key].price;
+        }
+
+        return total * qty;
+      }
+
+      // RENDER CART
+      function renderCart() {
+        const container = document.getElementById("cartItems");
+        const totalBox = document.getElementById("cartTotal");
+        const cartCount = document.getElementById("cartCount"); // Update angka di icon keranjang
+
+        container.innerHTML = "";
+        let grandTotal = 0;
+
+        cart.forEach((item, index) => {
+          grandTotal += item.total;
+
+          container.innerHTML += `
+            <div class="border-b pb-2 mb-2 flex justify-between items-start">
+                <div>
+                    <p class="font-semibold text-sm">${item.name}</p>
+
+                    ${Object.entries(item.options)
+                      .map(([k, v]) => {
+                        return `<p class="text-[10px] text-gray-500 capitalize">${k}: ${v.value}</p>`;
+                      })
+                      .join("")}
+
+                    <p class="text-green-600 font-bold mt-1 text-xs">
+                        Rp ${item.total.toLocaleString("id-ID")}
+                    </p>
+                </div>
+                
+                <button onclick="removeFromCart(${index})" class="text-red-500 hover:text-red-700 hover:bg-red-100 text-[10px] font-bold bg-red-50 px-2 py-1 rounded transition">
+                    Hapus ✖
+                </button>
+            </div>
+        `;
+        });
+
+        totalBox.innerText =
+          "Total: Rp " + (grandTotal + shippingCost).toLocaleString("id-ID");
+
+        // Update jumlah item merah di logo keranjang atas
+        if (cartCount) {
+          cartCount.innerText = cart.length;
+        }
+      }
+
+      // HAPUS ITEM DARI KERANJANG
+      function removeFromCart(index) {
+        // Hapus 1 item dari array berdasarkan posisinya (index)
+        cart.splice(index, 1);
+
+        // Render ulang keranjang supaya item yang dihapus hilang dari layar
+        renderCart();
+      }
+
+      // LOGIKA METODE PENGIRIMAN (Nampilin Note Ongkir)
+      function handleShippingTypeChange(value) {
+        const info = document.getElementById("shippingInfo");
+        if (value === "kurir") {
+          info.innerHTML =
+            "<span class='text-red-500 italic text-[10px]'>*Harga belum termasuk ongkir. Ongkir akan diinformasikan melalui WhatsApp setelah pemesanan.</span>";
+        } else if (value === "toko") {
+          info.innerHTML = "Ongkir: Gratis (Ambil di Lokasi)";
+        } else {
+          info.innerHTML = "";
+        }
+      }
+
+      // CHECKOUT WA
+      function setShipping(value) {
+        shippingMethod = value;
+
+        const rates = {
+          jne: 15000,
+          jnt: 12000,
+          gojek: 10000,
+          grab: 12000,
+        };
+
+        shippingCost = rates[value] || 0;
+
+        document.getElementById("shippingInfo").innerText =
+          "Ongkir: Rp " + shippingCost.toLocaleString("id-ID");
+
+        renderCart();
+      }
+
+      function setPayment(value) {
+        paymentMethod = value;
+      }
+
+      function checkoutWA() {
+        // 1. Ambil data pembeli
+        const name = document.getElementById("custName").value.trim();
+        const phone = document.getElementById("custPhone").value.trim();
+        const email = document.getElementById("custEmail").value.trim();
+        const address = document.getElementById("custAddress").value.trim();
+
+        // --- VALIDASI NAMA ---
+        // Cek apakah kosong ATAU kurang dari 5 karakter
+        if (!name || name.length < 5) {
+          alert("Mohon masukkan nama pemesan yang valid (minimal 5 karakter).");
+          document.getElementById("custName").focus();
+          return;
+        }
+
+        // --- VALIDASI NOMOR WHATSAPP ---
+        // Regex: Harus diawali +62 atau 08, lalu diikuti 8 sampai 11 angka (Total 10-13 digit)
+        const phoneRegex = /^(?:\+62|08)[0-9]{8,11}$/;
+        if (!phone || !phoneRegex.test(phone)) {
+          alert(
+            "Mohon masukkan nomor WhatsApp yang valid (contoh: 08123456789 atau +628123456789, 10-13 digit).",
+          );
+          document.getElementById("custPhone").focus();
+          return;
+        }
+
+        // --- VALIDASI EMAIL ---
+        // Regex: Memastikan ada karakter sebelum '@', ada '@', ada karakter setelahnya, ada titik (.), dan ekstensi domain
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!email || !emailRegex.test(email)) {
+          alert(
+            "Mohon masukkan alamat email yang valid (contoh: nama@gmail.com).",
+          );
+          document.getElementById("custEmail").focus();
+          return;
+        }
+
+        // --- VALIDASI ALAMAT ---
+        if (!address) {
+          alert("Mohon lengkapi alamat pengiriman terlebih dahulu.");
+          document.getElementById("custAddress").focus();
+          return;
+        }
+
+        // 2. Ambil data catatan pesanan
+        const orderNoteInput = document.getElementById("orderNote");
+        const orderNote =
+          orderNoteInput && orderNoteInput.value.trim() !== ""
+            ? orderNoteInput.value.trim()
+            : "-";
+
+        // 3. Ambil Metode Pengiriman dari dropdown HTML
+        const shippingSelect = document.getElementById("shippingType");
+        const sMethod =
+          shippingSelect.options[shippingSelect.selectedIndex].text;
+
+        if (shippingSelect.value === "") {
+          alert("Pilih metode pengiriman (Kurir/Ambil di Lokasi) dulu ya!");
+          return;
+        }
+
+        // 4. Ambil metode pembayaran dari tombol yang diklik tadi
+        const pMethod = document.getElementById("selectedPayment").value;
+        if (!pMethod) {
+          alert("Pilih metode pembayaran (Transfer/QRIS) dulu ya!");
+          return;
+        }
+
+        const sCost = typeof shippingCost !== "undefined" ? shippingCost : 0;
+
+        // 5. Validasi Keranjang
+        if (cart.length === 0) {
+          alert("Keranjang masih kosong!");
+          return;
+        }
+
+        let text = "🛒 KARYA SEJAHTERA ORDER\n\n";
+
+        // INFO CUSTOMER
+        text += `👤 *Data Pemesan:*\n`;
+        text += `Nama: ${name}\n`;
+        text += `No HP: ${phone}\n`;
+        text += `Alamat: ${address}\n\n`;
+
+        // DAFTAR PESANAN
+        text += `📦 *Daftar Produk:*\n`;
+        cart.forEach((item, i) => {
+          text += `${i + 1}. *${item.name}*\n`;
+          text += `   Qty: ${item.qty} Lembar/Pcs\n`;
+
+          for (let key in item.options) {
+            // Cek apakah data berupa objek {label, value} atau hanya string
+            const optValue =
+              typeof item.options[key] === "object"
+                ? item.options[key].value
+                : item.options[key];
+            text += `   ${key}: ${optValue}\n`;
+          }
+          text += `   Subtotal: Rp ${item.total.toLocaleString("id-ID")}\n\n`;
+        });
+
+        // RINGKASAN AKHIR
+        text += "====================\n";
+        text += `📝 *Catatan:* ${orderNote}\n`;
+        text += `🚚 *Kurir:* ${sMethod}\n`;
+        text += `💳 *Pembayaran:* ${pMethod}\n`;
+        text += `💸 *Ongkir:* Rp ${sCost.toLocaleString("id-ID")}\n`;
+
+        const cartTotal = cart.reduce((a, b) => a + b.total, 0);
+        const grandTotal = cartTotal + sCost;
+
+        text += `💰 *TOTAL AKHIR: Rp ${grandTotal.toLocaleString("id-ID")}*\n`;
+
+        // Logika tambahan note QRIS di WA
+        if (pMethod === "QRIS") {
+          text += `\n_Catatan: Saya menggunakan metode pembayaran QRIS. Bukti Screenshot (SS) pembayaran akan saya kirimkan setelah pesan ini._\n`;
+        }
+
+        // 4. Buka WhatsApp
+        const waNumber = "6285691023162";
+        const url =
+          "https://wa.me/" + waNumber + "?text=" + encodeURIComponent(text);
+        window.open(url, "_blank");
+      }
+
+      function filterCategory(cat) {
+        const filtered = products.filter((p) => p.category === cat);
+        renderProducts(filtered);
+      }
+
+      function toggleCart() {
+        const cartEl = document.getElementById("cartBox");
+        if (cartEl) cartEl.classList.toggle("hidden");
+      }
+
+      // FUNGSI SEARCH BARU DENGAN SUGESTI DROPDOWN
+function searchProductBaru(keyword) {
+  const kotak = document.getElementById("kotakSugesti");
+  kotak.innerHTML = "";
+  
+  if (!keyword || keyword.trim() === "") {
+    kotak.classList.add("hidden");
+    renderProducts(products); // Balikin semua produk kalau search kosong
+    return;
+  }
+
+  const teksKecil = keyword.toLowerCase();
+  
+  // Cari berdasarkan nama produk ATAU kategorinya
+  const hasilCocok = products.filter((p) => 
+    p.name.toLowerCase().includes(teksKecil) || p.category.toLowerCase().includes(teksKecil)
+  );
+
+  if (hasilCocok.length > 0) {
+    kotak.classList.remove("hidden");
+    
+    hasilCocok.forEach((p) => {
+      const divItem = document.createElement("div");
+      divItem.className = "p-3 hover:bg-green-50 cursor-pointer border-b border-slate-100 last:border-none flex items-center gap-3 transition-colors";
+      
+      // Tampilan List Sugesti (Ada gambar kecilnya biar makin cakep kyk Tokopedia)
+      divItem.innerHTML = `
+        <img src="${p.image}" class="w-10 h-10 object-cover rounded-md border border-slate-200">
+        <div>
+          <div class="text-sm font-bold text-slate-800">${p.name}</div>
+          <div class="text-[10px] font-semibold text-green-600 uppercase tracking-wider">${p.category}</div>
+        </div>
+      `;
+      
+      // Ketika list sugesti di-klik
+      divItem.onclick = function() {
+        document.getElementById("searchInput").value = p.name; // Isi input dengan nama produk
+        kotak.classList.add("hidden"); // Tutup dropdown
+        
+        renderProducts(products); // Pastikan semua produk tampil di layar dulu
+        
+        // Jeda sedikit biar DOM HTML selesai ngerender sebelum di-scroll
+        setTimeout(() => {
+          scrollKeProdukSpesifik(p.id);
+        }, 100);
+      };
+      
+      kotak.appendChild(divItem);
+    });
+  } else {
+    // Kalau gak ada yang cocok
+    kotak.classList.remove("hidden");
+    kotak.innerHTML = `<div class="p-4 text-center text-sm text-slate-500">Produk tidak ditemukan 😅</div>`;
+  }
+}
+
+// FUNGSI UNTUK SCROLL MULUS KE PRODUK
+function scrollKeProdukSpesifik(idProduk) {
+  const elemenTarget = document.getElementById("produk-card-" + idProduk);
+  
+  if (elemenTarget) {
+    // Scroll mulus posisinya agak ke tengah layar
+    elemenTarget.scrollIntoView({ behavior: "smooth", block: "center" });
+    
+    // Beri efek nyala (highlight) dan membesar dikit biar user lgsg ngeh
+    elemenTarget.classList.add("ring-4", "ring-green-500", "scale-105");
+    setTimeout(() => {
+      elemenTarget.classList.remove("ring-4", "ring-green-500", "scale-105");
+    }, 2000); // Hilang setelah 2 detik
+  }
+}
+
+// TUTUP DROPDOWN KALAU KLIK DI LUAR AREA SEARCH
+document.addEventListener("click", function(e) {
+  const input = document.getElementById("searchInput");
+  const kotak = document.getElementById("kotakSugesti");
+  if (input && kotak) {
+    if (!input.contains(e.target) && !kotak.contains(e.target)) {
+      kotak.classList.add("hidden");
+    }
+  }
+});
+
+      // Pastikan fungsi render terpanggil saat web dibuka
+      document.addEventListener("DOMContentLoaded", () => {
+        renderProducts();
+      });
+
+      // Validasi File
+      document.addEventListener("change", function (e) {
+        if (e.target && e.target.id === "fileUpload") {
+          const file = e.target.files[0];
+          if (file && file.size > 10 * 1024 * 1024) {
+            // 10MB
+            alert("File terlalu besar! Maksimal 10MB.");
+            e.target.value = "";
+          }
+        }
+      });
+
+      // ================= LOGIKA JASA DESAIN =================
+      let currentDesignType = "";
+
+      function showJasaDesign() {
+        const designSection = document.getElementById("jasaDesignSection");
+
+        // Tampilkan section
+        designSection.classList.remove("hidden");
+
+        // Animasi scroll perlahan ke area jasa desain
+        designSection.scrollIntoView({ behavior: "smooth" });
+
+        // --- ANIMASI GSAP MULAI DARI SINI ---
+        // 1. Matikan animasi lama kalau user klik navbar berkali-kali
+        gsap.killTweensOf("#animasi-jasa span");
+
+        // 2. Set posisi awal (Tenggelam dan transparan)
+        gsap.set("#animasi-jasa span", { y: 40, opacity: 0 });
+
+        // 3. Efek Reveal: Teks muncul mantul dari bawah secara bergantian
+        gsap.to("#animasi-jasa span", {
+          y: 0,
+          opacity: 1,
+          duration: 2.5,
+          stagger: 0.3, // Jeda antara kata "Layanan" & "Jasa Desain"
+          ease: "back.out(2.6)", // Efek memantul mahal
+          delay: 0.3, // Nunggu web kelar scroll bentar
+        });
+        // --- BATAS ANIMASI GSAP ---
+      }
+
+      // 1. Fungsi Pengecekan Template Wajib Dipilih
+      function cekDanBukaModal(type) {
+        if (type === 'template') {
+          const tplDipilih = document.getElementById('inputTemplateTerpilih').value;
+          if (!tplDipilih) {
+            alert("⚠️ Peringatan: Harap pilih (klik) salah satu gambar template terlebih dahulu sebelum melanjutkan!");
+            return; // Berhenti jika belum pilih template
+          }
+        }
+        openDesignModal(type);
+      }
+
+      // 2. Fungsi Buka Modal & Membangun Form yang Tidak Bisa Dihapus
+      function openDesignModal(type) {
+        currentDesignType = type;
+        const modal = document.getElementById("designModal");
+        const title = document.getElementById("designModalTitle");
+        const desc = document.getElementById("designModalDesc");
+        const formContainer = document.getElementById("dynamicFormContainer"); // Memanggil wadah baru
+
+        modal.classList.remove("hidden");
+
+        if (type === "template") {
+          title.innerText = "Form Order: Pakai Template";
+          desc.innerText = "Hemat waktu dan budget. Cukup beri tahu kami gaya template yang dipilih beserta isi teks yang ingin ditampilkan.";
+
+          const tplDipilih = document.getElementById('inputTemplateTerpilih').value;
+          const styleIsian = tplDipilih ? tplDipilih : "(Contoh: Minimalis Modern 1 / Elegan & Premium 2 / dll)";
+
+          // FORMAT 7 POIN UNTUK TEMPLATE
+          formContainer.innerHTML = `
+            <div class="space-y-3">
+              <div class="flex flex-col gap-1">
+                <label class="text-xs font-bold text-gray-800">1. Referensi Gaya Template:</label>
+                <input type="text" id="tpl_1" value="${styleIsian}" class="w-full p-2 border border-gray-300 rounded outline-none bg-gray-100 font-bold text-green-700" readonly>
+              </div>
+              <div class="flex flex-col gap-1">
+                <label class="text-xs font-bold text-gray-800">2. Nama Brand / Judul Utama: <span class="text-red-500">*</span></label>
+                <input type="text" id="tpl_2" class="w-full p-2 border border-gray-300 rounded outline-none focus:border-green-500 bg-white" placeholder="Wajib diisi..." required>
+              </div>
+              <div class="flex flex-col gap-1">
+                <label class="text-xs font-bold text-gray-800">3. Teks Tambahan / Deskripsi (Jika Ada):</label>
+                <input type="text" id="tpl_3" class="w-full p-2 border border-gray-300 rounded outline-none focus:border-green-500 bg-white" placeholder="Ketik di sini...">
+              </div>
+              <div class="flex flex-col gap-1">
+                <label class="text-xs font-bold text-gray-800">4. Warna Utama yang Diinginkan (Boleh Sertakan Kode Warna Jika Ada):</label>
+                <input type="text" id="tpl_4" class="w-full p-2 border border-gray-300 rounded outline-none focus:border-green-500 bg-white" placeholder="Ketik di sini...">
+              </div>
+              <div class="flex flex-col gap-1">
+                <label class="text-xs font-bold text-gray-800">5. Ukuran / Format Desain (Misal: A4, A5, dll):</label>
+                <input type="text" id="tpl_5" class="w-full p-2 border border-gray-300 rounded outline-none focus:border-green-500 bg-white" placeholder="Ketik di sini...">
+              </div>
+              <div class="flex flex-col gap-1">
+                <label class="text-xs font-bold text-gray-800">6. Info Kontak / Sosial Media (Jika Ingin Ditampilkan):</label>
+                <input type="text" id="tpl_6" class="w-full p-2 border border-gray-300 rounded outline-none focus:border-green-500 bg-white" placeholder="Ketik di sini...">
+              </div>
+              <div class="flex flex-col gap-1">
+                <label class="text-xs font-bold text-gray-800">7. Catatan Tambahan untuk Desainer:</label>
+                <textarea id="tpl_7" rows="2" class="w-full p-2 border border-gray-300 rounded outline-none focus:border-green-500 bg-white" placeholder="Ketik catatan di sini..."></textarea>
+              </div>
+            </div>
+          `;
+        } else {
+          title.innerText = "Form Order: Desain Custom";
+          desc.innerText = "Mari wujudkan ide eksklusif Anda. Semakin rinci informasi Anda, semakin akurat hasil desainnya.";
+
+          // FORMAT 11 POIN UNTUK CUSTOM
+          formContainer.innerHTML = `
+            <div class="space-y-3">
+              <div class="flex flex-col gap-1">
+                <label class="text-xs font-bold text-gray-800">1. Nama Usaha/Brand Anda: <span class="text-red-500">*</span></label>
+                <input type="text" id="cus_1" class="w-full p-2 border border-gray-300 rounded outline-none focus:border-green-500 bg-white" placeholder="Wajib diisi..." required>
+              </div>
+              <div class="flex flex-col gap-1">
+                <label class="text-xs font-bold text-gray-800">2. Bergerak di bidang apa?: (Cth: Kuliner, Jasa, Fashion)</label>
+                <input type="text" id="cus_2" class="w-full p-2 border border-gray-300 rounded outline-none focus:border-green-500 bg-white" placeholder="Ketik di sini...">
+              </div>
+              <div class="flex flex-col gap-1">
+                <label class="text-xs font-bold text-gray-800">3. Target Audiens: (Cth: Anak Sekolah, Pekerja Kantoran)</label>
+                <input type="text" id="cus_3" class="w-full p-2 border border-gray-300 rounded outline-none focus:border-green-500 bg-white" placeholder="Ketik di sini...">
+              </div>
+              <div class="flex flex-col gap-1">
+                <label class="text-xs font-bold text-gray-800">4. Tujuan Desain: (Cth: Promosi, Branding, Event, Informasi)</label>
+                <input type="text" id="cus_4" class="w-full p-2 border border-gray-300 rounded outline-none focus:border-green-500 bg-white" placeholder="Ketik di sini...">
+              </div>
+              <div class="flex flex-col gap-1">
+                <label class="text-xs font-bold text-gray-800">5. Referensi Style: (Cth: Mewah, Ceria, Vintage, Modern)</label>
+                <input type="text" id="cus_5" class="w-full p-2 border border-gray-300 rounded outline-none focus:border-green-500 bg-white" placeholder="Ketik di sini...">
+              </div>
+              <div class="flex flex-col gap-1">
+                <label class="text-xs font-bold text-gray-800">6. Warna Utama & Pendukung:</label>
+                <input type="text" id="cus_6" class="w-full p-2 border border-gray-300 rounded outline-none focus:border-green-500 bg-white" placeholder="Ketik di sini...">
+              </div>
+              <div class="flex flex-col gap-1">
+                <label class="text-xs font-bold text-gray-800">7. Ukuran & Format Desain: (Cth: A4, A5, Feed IG, Story IG)</label>
+                <input type="text" id="cus_7" class="w-full p-2 border border-gray-300 rounded outline-none focus:border-green-500 bg-white" placeholder="Ketik di sini...">
+              </div>
+              <div class="flex flex-col gap-1">
+                <label class="text-xs font-bold text-gray-800">8. Konten/Teks yang ingin dimasukkan:</label>
+                <textarea id="cus_8" rows="2" class="w-full p-2 border border-gray-300 rounded outline-none focus:border-green-500 bg-white" placeholder="Ketik di sini..."></textarea>
+              </div>
+              <div class="flex flex-col gap-1">
+                <label class="text-xs font-bold text-gray-800">9. Hal yang WAJIB ada di desain:</label>
+                <input type="text" id="cus_9" class="w-full p-2 border border-gray-300 rounded outline-none focus:border-green-500 bg-white" placeholder="Ketik di sini...">
+              </div>
+              <div class="flex flex-col gap-1">
+                <label class="text-xs font-bold text-gray-800">10. Hal yang TIDAK diinginkan:</label>
+                <input type="text" id="cus_10" class="w-full p-2 border border-gray-300 rounded outline-none focus:border-green-500 bg-white" placeholder="Ketik di sini...">
+              </div>
+              <div class="flex flex-col gap-1">
+                <label class="text-xs font-bold text-gray-800">11. Penjelasan Detail Konsep:</label>
+                <textarea id="cus_11" rows="2" class="w-full p-2 border border-gray-300 rounded outline-none focus:border-green-500 bg-white" placeholder="Ketik di sini..."></textarea>
+              </div>
+            </div>
+          `;
+        }
+      }
+
+      function closeDesignModal() {
+        document.getElementById("designModal").classList.add("hidden");
+      }
+
+      // 3. Fungsi Submit ke WhatsApp
+      function submitDesignOrder() {
+        const category = document.getElementById("designCategory").value;
+        let brief = "";
+
+        if (currentDesignType === "template") {
+          const t1 = document.getElementById("tpl_1").value;
+          const t2 = document.getElementById("tpl_2").value.trim();
+          const t3 = document.getElementById("tpl_3").value.trim();
+          const t4 = document.getElementById("tpl_4").value.trim();
+          const t5 = document.getElementById("tpl_5").value.trim();
+          const t6 = document.getElementById("tpl_6").value.trim();
+          const t7 = document.getElementById("tpl_7").value.trim();
+
+          // Validasi Wajib Isi
+          if (t2 === "") {
+            alert("Tolong isi Nama Brand/Judul Utama ya agar tim kami mudah memprosesnya!");
+            document.getElementById("tpl_2").focus();
+            return;
+          }
+
+          // Gabungkan Teks ke dalam variabel brief sesuai format WA
+          brief = `FORMAT ORDER TEMPLATE:%0A +`
+                  1. `Referensi Gaya Template: ${t1}%0A +`
+                  2. `Nama Brand / Judul Utama: ${t2}%0A +`
+                  3. `Teks Tambahan / Deskripsi (Jika Ada): ${t3 || "-"}%0A +`
+                  4. `Warna Utama yang Diinginkan: ${t4 || "-"}%0A +`
+                  5. `Ukuran / Format Desain: ${t5 || "-"}%0A +`
+                  6. `Info Kontak / Sosial Media: ${t6 || "-"}%0A +`
+                  7. `Catatan Tambahan untuk Desainer: ${t7 || "-"};`
+
+        } else {
+          const c1 = document.getElementById("cus_1").value.trim();
+          const c2 = document.getElementById("cus_2").value.trim();
+          const c3 = document.getElementById("cus_3").value.trim();
+          const c4 = document.getElementById("cus_4").value.trim();
+          const c5 = document.getElementById("cus_5").value.trim();
+          const c6 = document.getElementById("cus_6").value.trim();
+          const c7 = document.getElementById("cus_7").value.trim();
+          const c8 = document.getElementById("cus_8").value.trim();
+          const c9 = document.getElementById("cus_9").value.trim();
+          const c10 = document.getElementById("cus_10").value.trim();
+          const c11 = document.getElementById("cus_11").value.trim();
+
+          // Validasi Wajib Isi
+          if (c1 === "") {
+            alert("Tolong isi Nama Usaha/Brand Anda ya agar tim kami mudah memprosesnya!");
+            document.getElementById("cus_1").focus();
+            return;
+          }
+
+          // Gabungkan Teks ke dalam variabel brief sesuai format WA
+          brief = `FORMAT ORDER CUSTOM:%0A +`
+                  1. `Nama Usaha/Brand Anda: ${c1}%0A +`
+                  2. `Bergerak di bidang apa?: ${c2 || "-"}%0A +`
+                  3. `Target Audiens: ${c3 || "-"}%0A +`
+                  4. `Tujuan Desain: ${c4 || "-"}%0A +`
+                  5. `Referensi Style: ${c5 || "-"}%0A +`
+                  6. `Warna Utama & Pendukung: ${c6 || "-"}%0A +`
+                  7. `Ukuran & Format Desain: ${c7 || "-"}%0A +`
+                  8. `Konten/Teks yang ingin dimasukkan: ${c8 || "-"}%0A +`
+                  9. `Hal yang WAJIB ada di desain: ${c9 || "-"}%0A +`
+                  10. `Hal yang TIDAK diinginkan: ${c10 || "-"}%0A +`
+                  11. `Penjelasan Detail Konsep: ${c11 || "-"};`
+        }
+
+        const typeLabel = currentDesignType === "template" ? "Pakai Template (Cepat)" : "Custom (Desain dari Awal)";
+
+        let text = `🎨 *HALO KARYA SEJAHTERA, SAYA INGIN ORDER DESAIN* 🎨%0A%0A;`
+        text += `*Tipe Pembuatan:* ${typeLabel}%0A;`
+        text += `*Kebutuhan Produk:* ${category}%0A;`
+        text += `*====================*%0A;`
+        text += `*Detail Form Briefing:*%0A${brief}%0A;`
+        text += `*====================*%0A%0A;`
+        text += `Mohon dihitungkan estimasi biaya dan lama pengerjaannya ya min. Terima kasih!;`
+
+        const waNumber = "6285691023162";
+        const url = "https://wa.me/" + waNumber + "?text=" + text;
+        window.open(url, "_blank");
+
+        closeDesignModal();
+      }
+
+      // ================= FUNGSI PILIH KATEGORI CEPAT =================
+      // Diletakkan di LUAR fungsi lain agar bisa dipanggil oleh tombol HTML
+      function pilihKategoriCepat(cat) {
+        // 1. Filter kategori
+        if (cat === "semua") {
+          renderProducts();
+        } else {
+          filterCategory(cat);
+        }
+
+        // 2. Langsung meluncur (smooth scroll) ke bagian produk
+        // ID diperbaiki menjadi 'produkSection' sesuai HTML
+        const bagianProduk = document.getElementById("produkSection");
+        if (bagianProduk) {
+          bagianProduk.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      }
+
+      // ================= LOGIKA PEMBAYARAN BARU =================
+function pilihPembayaran(metode, elemenTombol) {
+  // Simpan metode ke input hidden
+  document.getElementById("selectedPayment").value = metode;
+
+  // Reset semua warna tombol kembali ke abu-abu
+  let semuaTombol = document.querySelectorAll(".pay-btn");
+  semuaTombol.forEach((btn) => {
+    btn.classList.remove(
+      "border-blue-500",
+      "bg-blue-50",
+      "border-orange-500",
+      "bg-orange-50",
+      "border-purple-500",
+      "bg-purple-50",
+      "border-green-600",
+      "bg-green-50",
+      "border-red-500",
+      "bg-red-50",
+      "text-blue-600",
+      "text-orange-600",
+      "text-purple-600",
+      "text-green-700",
+      "text-red-600",
+    );
+    btn.classList.add("border-gray-200", "text-gray-600");
+  });
+
+  // Berikan warna aktif sesuai metode yang dipilih
+  elemenTombol.classList.remove("border-gray-200", "text-gray-600");
+  if (metode === "Transfer")
+    elemenTombol.classList.add(
+      "border-green-600",
+      "bg-green-50",
+      "text-green-700",
+    );
+
+  if (metode === "QRIS")
+    elemenTombol.classList.add(
+      "border-red-500",
+      "bg-red-50",
+      "text-red-600",
+    );
+
+  // Tampilkan QRIS jika dipilih
+  const qrisArea = document.getElementById("qrisArea");
+  if (metode === "QRIS") {
+    qrisArea.classList.remove("hidden");
+  } else {
+    qrisArea.classList.add("hidden");
+  }
+
+  // ================= TAMBAH DI SINI =================
+  const info = document.getElementById("paymentInfo");
+
+  if (metode === "Transfer") {
+    info.innerHTML =
+      "<span class='text-blue-700 italic text-[11px]'>*Pembayaran via e-wallet atau m-banking. Nomor tujuan akan diberikan melalui WhatsApp setelah Checkout.</span>";
+  } else {
+    info.innerHTML = "";
+  }
+}
+
+      function pilihPengiriman(metode, elemenTombol) {
+        // 1. Update Select Hidden biar logic WA dan Info Ongkir tetep jalan
+        const selectEl = document.getElementById("shippingType");
+        selectEl.value = metode;
+        handleShippingTypeChange(metode);
+
+        // 2. Reset semua warna tombol pengiriman kembali ke abu-abu
+        let semuaTombol = document.querySelectorAll(".ship-btn");
+        semuaTombol.forEach((btn) => {
+          btn.classList.remove(
+            "border-green-600",
+            "bg-green-50",
+            "text-green-700"
+          );
+          btn.classList.add("border-gray-200", "text-gray-600");
+        });
+
+        // 3. Berikan warna hijau aktif ke tombol yang baru saja diklik
+        elemenTombol.classList.remove("border-gray-200", "text-gray-600");
+        elemenTombol.classList.add(
+          "border-green-600",
+          "bg-green-50",
+          "text-green-700"
+        );
+      }
+
+      // ================= LOGIKA PILIH TEMPLATE TABS =================
+      const dataTemplates = {
+        "Minimalis Modern": [
+          { nama: "Minimalis Modern 1", img: "mm1.jpeg" },
+          { nama: "Minimalis Modern 2", img: "mm2.jpeg" },
+          { nama: "Minimalis Modern 3", img: "mm3.jpeg" }
+        ],
+        "Elegan & Premium": [
+          { nama: "Elegan & Premium 1", img: "ep1.jpeg" },
+          { nama: "Elegan & Premium 2", img: "ep2.jpeg" },
+          { nama: "Elegan & Premium 3", img: "ep3.jpeg" }
+        ],
+        "Creative & Colorful": [
+          { nama: "Creative & Colorful 1", img: "cc1.jpeg" },
+          { nama: "Creative & Colorful 2", img: "cc2.jpeg" },
+          { nama: "Creative & Colorful 3", img: "cc3.jpeg" }
+        ],
+        "Professional Corporate": [
+          { nama: "Professional Corporate 1", img: "pc1.jpeg" },
+          { nama: "Professional Corporate 2", img: "pc2.jpeg" },
+          { nama: "Professional Corporate 3", img: "pc3.jpeg" }
+        ],
+        "Fun & Playful": [
+          { nama: "Fun & Playful 1", img: "fp1.jpeg" },
+          { nama: "Fun & Playful 2", img: "fp2.jpeg" },
+          { nama: "Fun & Playful 3", img: "fp3.jpeg" }
+        ],
+        "Feminine & Soft": [
+          { nama: "Feminine & Soft 1", img: "fs1.jpeg" },
+          { nama: "Feminine & Soft 2", img: "fs2.jpeg" },
+          { nama: "Feminine & Soft 3", img: "fs3.jpeg" }
+        ],
+        "Bold & Eye-Catching": [
+          { nama: "Bold & Eye-Catching 1", img: "be1.jpeg" },
+          { nama: "Bold & Eye-Catching 2", img: "be2.jpeg" },
+          { nama: "Bold & Eye-Catching 3", img: "be3.jpeg" }
+        ]
+      };
+
+      function pilihKategoriTemplate(kategori) {
+        // Ganti warna tab aktif
+        const tabs = document.querySelectorAll('.tab-kategori');
+        tabs.forEach(tab => {
+          if (tab.innerText === kategori) {
+            tab.classList.add('bg-green-100', 'text-green-700', 'border-green-500');
+            tab.classList.remove('text-slate-600', 'border-slate-50', 'hover:bg-slate-200');
+          } else {
+            tab.classList.remove('bg-green-100', 'text-green-700', 'border-green-500');
+            tab.classList.add('text-slate-600', 'border-slate-50', 'hover:bg-slate-200');
+          }
+        });
+
+        // Render gambarnya
+        const wadah = document.getElementById('wadah-template');
+        wadah.innerHTML = '';
+        const templates = dataTemplates[kategori];
+        
+      templates.forEach(tpl => {
+          wadah.innerHTML += `
+             <div onclick="setDesainTerpilih('${tpl.nama}', this)" class="kartu-template cursor-pointer border-2 border-slate-200 bg-white rounded-xl transition-all duration-300 overflow-hidden flex flex-col shadow-sm hover:shadow-xl hover:scale-105 hover:-translate-y-1 hover:border-green-400">
+        <div class="w-full aspect-square overflow-hidden border-b border-slate-200 bg-slate-100">
+          <img src="${tpl.img}" class="w-full h-full object-cover transition-transform duration-300" alt="${tpl.nama}" />
+        </div>
+              <div class="w-full bg-slate-50 p-2 flex items-center justify-center">
+          <span class="text-slate-700 text-[10px] font-bold text-center line-clamp-1">
+            ${tpl.nama}
+          </span>
+        </div>
+      </div>
+    `;
+  });
+}
+
+      function setDesainTerpilih(nama, elemen) {
+  // Kembalikan semua kartu ke ukuran & warna normal
+  document.querySelectorAll('.kartu-template').forEach(k => {
+    k.classList.remove('border-green-500', 'ring-4', 'ring-green-500/30', 'scale-105', '-translate-y-1', 'shadow-xl');
+    k.classList.add('border-slate-200', 'shadow-sm');
+  });
+  
+  // Bikin kartu yang lagi DIKLIK jadi maju, nge-zoom, dan punya ring hijau (terkunci fokusnya)
+  elemen.classList.remove('border-slate-200', 'shadow-sm');
+  elemen.classList.add('border-green-500', 'ring-4', 'ring-green-500/30', 'scale-105', '-translate-y-1', 'shadow-xl');
+  
+  // Simpan nilai & tampilkan teks notifikasi
+  document.getElementById('inputTemplateTerpilih').value = nama;
+  document.getElementById('notifTemplate').classList.remove('hidden');
+  document.getElementById('namaTemplateTampil').innerText = nama;
+}
+
+// ================= MODAL SYARAT & KETENTUAN =================
+      function openTerms() {
+        document.getElementById("termsModal").classList.remove("hidden");
+      }
+
+      function closeTerms() {
+        document.getElementById("termsModal").classList.add("hidden");
+      }
+
+// ================= MODAL KEBIJAKAN PRIVASI =================
+      function openPrivacy() {
+        document.getElementById("privacyModal").classList.remove("hidden");
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closePrivacy() {
+        document.getElementById("privacyModal").classList.add("hidden");
+        document.body.style.overflow = 'auto';
+      }
+
+// Load kategori pertama otomatis pas web dibuka
+document.addEventListener('DOMContentLoaded', () => {
+  pilihKategoriTemplate('Minimalis Modern');
+});
+
+      window.onload = () => {
+        renderProducts();
+      };
+    </script>
+
+    <script>
+    // Fungsi pembantu untuk mengunci/membuka scroll body
+    function lockScroll() {
+        document.body.style.overflow = 'hidden';
+    }
+
+    function unlockScroll() {
+        document.body.style.overflow = 'auto';
+    }
+
+    // --- FUNGSI NOTIFIKASI (FEEDBACK) ---
+    function showSuccessFeedback(message) {
+        // Buat elemen notifikasi secara dinamis
+        const toast = document.createElement('div');
+        toast.className = 'fixed bottom-10 left-1/2 -translate-x-1/2 z-[200] bg-slate-900 text-white px-6 py-3 rounded-2xl shadow-2xl flex items-center gap-3 animate-in slide-in-from-bottom-5 duration-300 border border-white/10';
+        toast.innerHTML = `
+            <div class="w-6 h-6 bg-emerald-500 rounded-full flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </div>
+            <span class="text-sm font-bold tracking-wide">${message}</span>
+        `;
+        document.body.appendChild(toast);
+
+        // Hapus notifikasi setelah 3 detik
+        setTimeout(() => {
+            toast.classList.add('animate-out', 'fade-out', 'slide-out-to-bottom-5');
+            setTimeout(() => toast.remove(), 300);
+        }, 3000);
+    }
+
+    // Fungsi Pemicu Manual (Pasang di Link/Tombol SK)
+    function openTerms() {
+        document.getElementById('termsModal').classList.remove('hidden');
+        lockScroll();
+    }
+
+    // Logika Checkbox SK
+    function toggleAgreeBtnTerms() {
+        const checkbox = document.getElementById('agreeTermsCheckbox');
+        const btn = document.getElementById('btnAgreeTerms');
+        if (checkbox.checked) {
+            btn.disabled = false;
+            btn.classList.remove('bg-slate-300', 'cursor-not-allowed');
+            btn.classList.add('bg-emerald-600', 'hover:bg-emerald-700', 'shadow-lg');
+        } else {
+            btn.disabled = true;
+            btn.classList.add('bg-slate-300', 'cursor-not-allowed');
+            btn.classList.remove('bg-emerald-600', 'hover:bg-emerald-700', 'shadow-lg');
+        }
+    }
+
+    function handleFinalAgreeTerms() {
+        document.getElementById('termsModal').classList.add('hidden');
+        document.getElementById('privacyModal').classList.remove('hidden');
+    }
+
+    function closeTerms() { 
+        document.getElementById('termsModal').classList.add('hidden');
+        unlockScroll(); 
+    }
+
+    // Logika Checkbox Privasi
+    function toggleAgreeBtnPrivacy() {
+        const checkbox = document.getElementById('agreePrivacyCheckbox');
+        const btn = document.getElementById('btnAgreePrivacy');
+        if (checkbox.checked) {
+            btn.disabled = false;
+            btn.classList.remove('bg-slate-300', 'cursor-not-allowed');
+            btn.classList.add('bg-indigo-600', 'hover:bg-indigo-700', 'shadow-lg');
+        } else {
+            btn.disabled = true;
+            btn.classList.add('bg-slate-300', 'cursor-not-allowed');
+            btn.classList.remove('bg-indigo-600', 'hover:bg-indigo-700', 'shadow-lg');
+        }
+    }
+
+    function handleFinalAgreePrivacy() {
+        // 1. Sembunyikan modal terakhir
+        document.getElementById('privacyModal').classList.add('hidden');
+        
+        // 2. Aktifkan scroll kembali
+        unlockScroll();
+        
+        // 3. Berikan feedback visual (Notifikasi)
+        showSuccessFeedback("S&K dan Kebijakan Privasi Berhasil Disetujui");
+    }
+
+    function closePrivacy() { 
+        document.getElementById('privacyModal').classList.add('hidden');
+        unlockScroll(); 
+    }
+
+  function toggleDropdown() {
+    const list = document.getElementById('customOptionsList');
+    list.classList.toggle('hidden');
+  }
+
+  function pilihOpsi(val) {
+    // Update teks di tombol
+    document.getElementById('selectedProductText').innerText = val;
+    // Update nilai di input hidden (supaya fungsi kirimWA tetap jalan)
+    document.getElementById('designCategory').value = val;
+    // Tutup dropdown
+    document.getElementById('customOptionsList').classList.add('hidden');
+  }
+
+  // Menutup dropdown kalau user klik di luar area menu
+  window.onclick = function(event) {
+    if (!event.target.closest('#dropdownWrapper')) {
+      document.getElementById('customOptionsList').classList.add('hidden');
+    }
+  }
+
+</script>
+
+  </body>
+</html>
